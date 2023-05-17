@@ -12,8 +12,10 @@ services:
       - ./project_iThink:/app
     environment:
       SIGNING_KEY: ${SIGNING_KEY}
-      DATABASE_URL: mongodb://root:password@mongo
+      MONGO_URL: mongodb://root:password@mongo
       DATABASE_NAME: db-name
+      WAIT_BEFORE: 5
+      WAIT_TIMEOUT: 60
       WAIT_HOSTS: mongo:27017
   ghi:
     image: node:lts-bullseye

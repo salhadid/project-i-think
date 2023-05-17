@@ -1,12 +1,8 @@
 from pydantic import BaseModel
 from pymongo import MongoClient
-
+from .client import Queries
 # from typing import Optional
 import os
-
-
-client = MongoClient(os.environ["DATABASE_URL"])
-dbname = os.environ["DATABASE_NAME"]
 
 
 class DuplicateAccountError(ValueError):
@@ -24,29 +20,33 @@ class AccountOut(AccountIn):
     id: str
 
 
-class AccountQueries:
-    def __init__(self):
-        self.client = MongoClient("mongodb://localhost:27017/")
-        self.db = self.client["mydatabase"]
-        self.users_collection = self.db["users"]
+class AccountQueries(Queries):
+
+    DB_NAME = "db-name"
+    COLLECTION = "accounts"
 
     def get_all_users(self):
-        results = self.users_collection.find()
+        results = self.collection.find()
         return list(results)
 
-    def get_user(self, email: str) -> AccountOut:
-        return self.users_collection.find_one({"email": email})
+    def get(self, email: str) -> AccountOut:
+        return self.collection.find_one({"email": email})
 
     def create_user(self, info: AccountIn, hashed_password: str) -> AccountOut:
-        self.users_collection.insert_one(info, hashed_password)
-        return info
+        props = info.dict()
+        props["password"] = hashed_password
+        if self.collection.find_one({"email": props["email"]}):
+            raise DuplicateAccountError()
+        self.collection.insert_one(props)
+        props["id"] = str(props["_id"])
+        return AccountOut(**props)
 
     def update_user(self, info: AccountOut, data):
-        self.users_collection.update_one(info, data)
+        self.collection.update_one(info, data)
         return data
 
     def delete_user(self, user_id):
-        self.users_collection.delete_one({"_id": user_id})
+        self.collection.delete_one({"_id": user_id})
         return True
 
 
