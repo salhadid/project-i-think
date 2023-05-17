@@ -1,0 +1,9 @@
+fastapi[all]==0.92.0
+uvicorn[standard]==0.17.6
+pymongo==4.1.1
+pydantic==1.10.7
+jwtdown-fastapi==0.5.0
+pytest
+openai
+fuzzywuzzy
+python-Levenshtein

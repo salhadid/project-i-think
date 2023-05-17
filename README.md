@@ -1,5 +1,25 @@
 # Module3 Project Gamma
 
+## Getting Started
+
+* Create volume in docker for data
+** docker volume create mongo-data
+*** docker compose build
+*** docker compose up
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Getting started
 
 You have a project repository, now what? The next section
