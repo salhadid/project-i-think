@@ -20,8 +20,10 @@ const LoginForm = () => {
         );
         localStorage.setItem("token", response.data.access_token);
         console.log("Logged in successfully");
-        resetForm();
         alert(`User ${email} was logged in successfully`);
+        // Refresh the page after successful login
+        window.location.reload();
+        resetForm();
         } catch (error) {
         console.error(error.response.data);
         }
