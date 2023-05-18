@@ -1,8 +1,11 @@
 from pydantic import BaseModel
 from pymongo import MongoClient
+from pymongo.errors import DuplicateKeyError
 
 # from typing import Optional
 import os
+
+from queries.client import Queries
 
 
 client = MongoClient(os.environ["DATABASE_URL"])
@@ -24,7 +27,7 @@ class AccountOut(AccountIn):
     id: str
 
 
-class AccountQueries:
+class AccountQueries(Queries):
     def __init__(self):
         self.client = MongoClient("mongodb://localhost:27017/")
         self.db = self.client["mydatabase"]
@@ -38,8 +41,14 @@ class AccountQueries:
         return self.users_collection.find_one({"email": email})
 
     def create_user(self, info: AccountIn, hashed_password: str) -> AccountOut:
-        self.users_collection.insert_one(info, hashed_password)
-        return info
+        props = info.dict()
+        props["password"] = hashed_password
+        try:
+            self.users_collection.insert_one(props)
+        except DuplicateKeyError:
+            raise DuplicateKeyError
+        props["id"] = str(props["_id"])
+        return AccountOut(**props)
 
     def update_user(self, info: AccountOut, data):
         self.users_collection.update_one(info, data)
