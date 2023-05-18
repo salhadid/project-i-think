@@ -4,6 +4,7 @@ import axios from "axios";
 const LoginForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,12 +27,16 @@ const LoginForm = () => {
         resetForm();
         } catch (error) {
         console.error(error.response.data);
+        setErrorMessage(
+            "Incorrect email or password. Are you sure you're a human?"
+        );
         }
     };
 
     const resetForm = () => {
         setEmail("");
         setPassword("");
+        setErrorMessage("");
     };
 
     return (
@@ -54,6 +59,7 @@ const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
             />
         </div>
+        <div style={{ color: "red" }}>{errorMessage}</div>
         <button type="submit">Login</button>
         </form>
     );
