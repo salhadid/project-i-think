@@ -1,8 +1,16 @@
 from pydantic import BaseModel
 from pymongo import MongoClient
+<<<<<<< HEAD
+from pymongo.errors import DuplicateKeyError
+
+# from typing import Optional
+=======
 from .client import Queries
 from typing import Optional
+>>>>>>> main
 import os
+
+from queries.client import Queries
 
 
 class DuplicateAccountError(ValueError):
