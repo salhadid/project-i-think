@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from pymongo import MongoClient
 from .client import Queries
-# from typing import Optional
+from typing import Optional
 import os
 
 
@@ -18,6 +18,12 @@ class AccountIn(BaseModel):
 
 class AccountOut(AccountIn):
     id: str
+
+
+class AccountPatch(BaseModel):
+    email: Optional[str]
+    password: Optional[str]
+    full_name: Optional[str]
 
 
 class AccountQueries(Queries):
@@ -41,9 +47,11 @@ class AccountQueries(Queries):
         props["id"] = str(props["_id"])
         return AccountOut(**props)
 
-    def update_user(self, info: AccountOut, data):
-        self.collection.update_one(info, data)
-        return data
+    def update_user(self, email: str, info: AccountPatch) -> AccountOut:
+        data = info.dict(exclude_unset=True)
+        self.collection.update_one({"email": email}, {"$set": data})
+        updated_user = self.collection.find_one({"email": email})
+        return updated_user
 
     def delete_user(self, user_id):
         self.collection.delete_one({"_id": user_id})

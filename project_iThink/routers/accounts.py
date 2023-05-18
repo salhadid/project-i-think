@@ -14,12 +14,13 @@ from queries.accounts import (
     AccountOut,
     AccountQueries,
     DuplicateAccountError,
+    AccountPatch,
 )
 from typing import Optional
 
 
 class AccountForm(BaseModel):
-    username: str
+    email: str
     password: str
 
 
@@ -64,3 +65,13 @@ async def get_current_user_info(account_data: Optional[dict] = Depends(authentic
     if account_data:
         return account_data
     return {"message": "No account logged in."}
+
+
+@router.patch("/api/accounts/{email}", response_model=AccountOut)
+async def update_account(
+    email: str,
+    updates: AccountPatch,
+    accounts: AccountQueries = Depends(),
+):
+    updated_account = accounts.update_user(email, updates)
+    return updated_account
