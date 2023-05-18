@@ -6,24 +6,31 @@ const LoginForm = () => {
     const [password, setPassword] = useState("");
 
     const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
+        e.preventDefault();
+        try {
         const response = await axios.post(
-        "http://localhost:8000/token",
-        `grant_type=password&username=${email}&password=${password}&scope=&client_id=&client_secret=`,
-        {
+            "http://localhost:8000/token",
+            `grant_type=password&username=${email}&password=${password}&scope=&client_id=&client_secret=`,
+            {
             headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            Accept: "application/json",
+                "Content-Type": "application/x-www-form-urlencoded",
+                Accept: "application/json",
             },
-        }
+            }
         );
         localStorage.setItem("token", response.data.access_token);
         console.log("Logged in successfully");
-    } catch (error) {
+        resetForm();
+        alert(`User ${email} was logged in successfully`);
+        } catch (error) {
         console.error(error.response.data);
-    }
-};
+        }
+    };
+
+    const resetForm = () => {
+        setEmail("");
+        setPassword("");
+    };
 
     return (
         <form onSubmit={handleSubmit}>
