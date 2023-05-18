@@ -1,0 +1,15 @@
+[{
+  "_id": {
+    "$oid": "646553bc4c035b26af35d96e"
+  },
+  "email": "email@email.com",
+  "password": "$2b$12$rFZ/dvVOiCSVnt6ps2KJhOYNorQo7LqTPtAQmDEO1oPDmWY4e9hHC",
+  "full_name": "string"
+},{
+  "_id": {
+    "$oid": "6466570bc6f6f4087e37ff2e"
+  },
+  "email": "c.r.zambito@gmail.com",
+  "password": "$2b$12$Z/mIP3VgljKIVRHLb4LVk.mf288qqbsBAxZ5uddRpTaiYUwN47LNu",
+  "full_name": "Chris Zambito"
+}]

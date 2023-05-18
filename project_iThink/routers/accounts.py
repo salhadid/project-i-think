@@ -14,11 +14,13 @@ from queries.accounts import (
     AccountOut,
     AccountQueries,
     DuplicateAccountError,
+    AccountPatch,
 )
+from typing import Optional
 
 
 class AccountForm(BaseModel):
-    username: str
+    email: str
     password: str
 
 
@@ -56,3 +58,31 @@ async def create_account(
 @router.get("/api/accounts/", response_model=list[AccountOut])
 async def get_all_accounts(repo: AccountQueries = Depends()):
     return repo.get_all_accounts()
+
+
+@router.get(
+    "/api/accounts/details",
+)
+async def get_current_user_info(
+    account_data: Optional[dict] = Depends(
+        authenticator.try_get_current_account_data
+    ),
+):
+    if account_data:
+        return account_data
+    return {"message": "No account logged in."}
+
+
+@router.patch("/api/accounts/{email}", response_model=AccountOut)
+async def update_account(
+    email: str,
+    updates: AccountPatch,
+    accounts: AccountQueries = Depends(),
+):
+    data = updates.dict(exclude_unset=True)
+    if "password" in data:
+        hashed_password = authenticator.hash_password(data["password"])
+    else:
+        hashed_password = None
+    updated_account = accounts.update_user(email, data, hashed_password)
+    return updated_account
