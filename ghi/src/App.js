@@ -4,6 +4,7 @@ import ErrorNotification from "./ErrorNotification";
 import "./App.css";
 import LoginForm from "./LoginForm.js";
 import LogOut from "./LogOut.js";
+import AddUserForm from "./AddUserForm.js";
 
 function App() {
   const [launchInfo, setLaunchInfo] = useState([]);
@@ -34,6 +35,7 @@ function App() {
       <ErrorNotification error={error} />
       <Construct info={launchInfo} />
       <LogOut />
+      <AddUserForm />
     </div>
   );
 }
