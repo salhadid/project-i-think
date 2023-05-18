@@ -15,10 +15,9 @@ const AddUserForm = () => {
             full_name: full_name,
         });
         console.log(response.data);
+        console.log("cat")
         resetForm();
-        alert(
-            `Congratulations, account was successfully created!`
-        );
+        alert(`Congratulations, account was successfully created!`);
         } catch (error) {
         console.log(error.response.data);
         }
