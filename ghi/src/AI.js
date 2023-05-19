@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { ClipLoader } from "react-spinners";
 
 function AI() {
     const [prompt, setPrompt] = useState("");
@@ -7,13 +8,16 @@ function AI() {
     const [yesList, setYesList] = useState([]);
     const [noList, setNoList] = useState([]);
     const [maybeList, setMaybeList] = useState([]);
+    const [processing, setProcessing] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setProcessing(true);
         const response = await axios.post("http://localhost:8000/chat", {
         message: prompt,
         });
         setIdea(response.data.answer);
+        setProcessing(false);
     };
 
     const handleYes = () => {
@@ -134,111 +138,119 @@ function AI() {
                 Send
             </button>
             </form>
-            {idea && (
-            <div className="mt-6 space-y-3">
-                <p className="font-medium text-lg">{idea}</p>
-                <div className="flex justify-between">
-                <button
-                    className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded"
-                    onClick={handleYes}
-                >
-                    YES
-                </button>
-                <button
-                    className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
-                    onClick={handleNo}
-                >
-                    NO
-                </button>
-                <button
-                    className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded"
-                    onClick={handleMaybe}
-                >
-                    MAYBE???
-                </button>
+            {processing ? (
+            <div className="flex justify-center mt-6">
+                <ClipLoader color={"#9f7aea"} />
+            </div>
+            ) : (
+            <>
+                {idea && (
+                <div className="mt-6 space-y-3">
+                    <p className="font-medium text-lg">{idea}</p>
+                    <div className="flex justify-between">
+                    <button
+                        className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded"
+                        onClick={handleYes}
+                    >
+                        YES
+                    </button>
+                    <button
+                        className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
+                        onClick={handleNo}
+                    >
+                        NO
+                    </button>
+                    <button
+                        className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded"
+                        onClick={handleMaybe}
+                    >
+                        MAYBE???
+                    </button>
+                    </div>
                 </div>
-            </div>
+                )}
+                <div className="mt-8 space-y-4">
+                <div>
+                    <h2 className="font-semibold text-xl text-purple-600">Yes</h2>
+                    <ul
+                    className="space-y-2"
+                    onDragEnter={handleDragEnter}
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, "yes")}
+                    >
+                    {yesList.map((item, index) => (
+                        <li
+                        key={index}
+                        className="bg-green-100 p-2 rounded border-2 border-green-500 flex justify-between items-center"
+                        draggable
+                        onDragStart={(e) => handleDragStart(e, "yes", index)}
+                        >
+                        <span>{item}</span>
+                        <button
+                            className="bg-red-500 hover:bg-red-600 text-white rounded px-2 py-1"
+                            onClick={() => handleDelete("yes", index)}
+                        >
+                            X
+                        </button>
+                        </li>
+                    ))}
+                    </ul>
+                </div>
+                <div>
+                    <h2 className="font-semibold text-xl text-purple-600">No</h2>
+                    <ul
+                    className="space-y-2"
+                    onDragEnter={handleDragEnter}
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, "no")}
+                    >
+                    {noList.map((item, index) => (
+                        <li
+                        key={index}
+                        className="bg-red-100 p-2 rounded border-2 border-red-500 flex justify-between items-center"
+                        draggable
+                        onDragStart={(e) => handleDragStart(e, "no", index)}
+                        >
+                        <span>{item}</span>
+                        <button
+                            className="bg-red-500 hover:bg-red-600 text-white rounded px-2 py-1"
+                            onClick={() => handleDelete("no", index)}
+                        >
+                            X
+                        </button>
+                        </li>
+                    ))}
+                    </ul>
+                </div>
+                <div>
+                    <h2 className="font-semibold text-xl text-purple-600">Maybe</h2>
+                    <ul
+                    className="space-y-2"
+                    onDragEnter={handleDragEnter}
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, "maybe")}
+                    >
+                    {maybeList.map((item, index) => (
+                        <li
+                        key={index}
+                        className="bg-yellow-100 p-2 rounded border-2 border-yellow-500 flex justify-between items-center"
+                        draggable
+                        onDragStart={(e) => handleDragStart(e, "maybe", index)}
+                        >
+                        <span>{item}</span>
+                        <button
+                            className="bg-red-500 hover:bg-red-600 text-white rounded px-2 py-1"
+                            onClick={() => handleDelete("maybe", index)}
+                        >
+                            X
+                        </button>
+                        </li>
+                    ))}
+                    </ul>
+                </div>
+                </div>
+            </>
             )}
-            <div className="mt-8 space-y-4">
-            <div>
-                <h2 className="font-semibold text-xl text-purple-600">Yes</h2>
-                <ul
-                className="space-y-2"
-                onDragEnter={handleDragEnter}
-                onDragOver={handleDragOver}
-                onDrop={(e) => handleDrop(e, "yes")}
-                >
-                {yesList.map((item, index) => (
-                    <li
-                    key={index}
-                    className="bg-green-100 p-2 rounded border-2 border-green-500 flex justify-between items-center"
-                    draggable
-                    onDragStart={(e) => handleDragStart(e, "yes", index)}
-                    >
-                    <span>{item}</span>
-                    <button
-                        className="bg-red-500 hover:bg-red-600 text-white rounded px-2 py-1"
-                        onClick={() => handleDelete("yes", index)}
-                    >
-                        X
-                    </button>
-                    </li>
-                ))}
-                </ul>
-            </div>
-            <div>
-                <h2 className="font-semibold text-xl text-purple-600">No</h2>
-                <ul
-                className="space-y-2"
-                onDragEnter={handleDragEnter}
-                onDragOver={handleDragOver}
-                onDrop={(e) => handleDrop(e, "no")}
-                >
-                {noList.map((item, index) => (
-                    <li
-                    key={index}
-                    className="bg-red-100 p-2 rounded border-2 border-red-500 flex justify-between items-center"
-                    draggable
-                    onDragStart={(e) => handleDragStart(e, "no", index)}
-                    >
-                    <span>{item}</span>
-                    <button
-                        className="bg-red-500 hover:bg-red-600 text-white rounded px-2 py-1"
-                        onClick={() => handleDelete("no", index)}
-                    >
-                        X
-                    </button>
-                    </li>
-                ))}
-                </ul>
-            </div>
-            <div>
-                <h2 className="font-semibold text-xl text-purple-600">Maybe</h2>
-                <ul
-                className="space-y-2"
-                onDragEnter={handleDragEnter}
-                onDragOver={handleDragOver}
-                onDrop={(e) => handleDrop(e, "maybe")}
-                >
-                {maybeList.map((item, index) => (
-                    <li
-                    key={index}
-                    className="bg-yellow-100 p-2 rounded border-2 border-yellow-500 flex justify-between items-center"
-                    draggable
-                    onDragStart={(e) => handleDragStart(e, "maybe", index)}
-                    >
-                    <span>{item}</span>
-                    <button
-                        className="bg-red-500 hover:bg-red-600 text-white rounded px-2 py-1"
-                        onClick={() => handleDelete("maybe", index)}
-                    >
-                        X
-                    </button>
-                    </li>
-                ))}
-                </ul>
-            </div>
-            </div>
         </div>
         </div>
     );
