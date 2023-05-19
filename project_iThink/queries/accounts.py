@@ -65,3 +65,5 @@ def get_all_accounts(self) -> list[AccountOut]:
         document["id"] = str(document["_id"])
         accounts.append(AccountOut(**document))
     return accounts
+
+# testing
