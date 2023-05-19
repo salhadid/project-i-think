@@ -12,6 +12,7 @@ services:
       - ./project_iThink:/app
     environment:
       SIGNING_KEY: ${SIGNING_KEY}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
       MONGO_URL: mongodb://root:password@mongo
       DATABASE_NAME: db-name
       WAIT_BEFORE: 5
