@@ -21,12 +21,13 @@ class AccountOut(AccountIn):
 
 
 class AccountPatch(BaseModel):
-    email: str | None = None
-    password: str | None = None
-    full_name: str | None = None
+    email: Optional[str]
+    password: Optional[str]
+    full_name: Optional[str]
 
 
 class AccountQueries(Queries):
+
     DB_NAME = "db-name"
     COLLECTION = "accounts"
 
@@ -46,15 +47,10 @@ class AccountQueries(Queries):
         props["id"] = str(props["_id"])
         return AccountOut(**props)
 
-    def update_user(self, email: str, data: AccountPatch, hashed_password: str) -> AccountOut:
-        updated_user = self.collection.find_one({"email": email})
-        if updated_user is None:
-            raise ValueError(f"No account found with email {email}")
-        if hashed_password:
-            data["password"] = hashed_password
+    def update_user(self, email: str, info: AccountPatch) -> AccountOut:
+        data = info.dict(exclude_unset=True)
         self.collection.update_one({"email": email}, {"$set": data})
-        updated_user = self.collection.find_one({"_id": updated_user["_id"]})
-        updated_user["id"] = str(updated_user["_id"])
+        updated_user = self.collection.find_one({"email": email})
         return updated_user
 
     def delete_user(self, user_id):
