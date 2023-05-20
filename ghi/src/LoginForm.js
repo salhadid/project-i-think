@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 
 const LoginForm = () => {
@@ -8,6 +9,8 @@ const LoginForm = () => {
     const [errorMessage, setErrorMessage] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const fadeIn = useSpring({ opacity: 1, from: { opacity: 0 } });
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,7 +28,8 @@ const LoginForm = () => {
         localStorage.setItem("token", response.data.access_token);
         console.log("Logged in successfully");
         alert(`User ${email} was logged in successfully`);
-        // Refresh the page after successful login
+        // Navigate to home page and refresh
+        navigate("/");
         window.location.reload();
         resetForm();
         } catch (error) {

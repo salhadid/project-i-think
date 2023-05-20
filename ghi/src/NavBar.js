@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavBar = () => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -15,7 +17,10 @@ const NavBar = () => {
         console.log("Logged out successfully");
         alert("User was logged out successfully");
         setLoggedIn(false);
+        navigate("/");
+        window.location.reload();
     };
+
 
     const toggleMenu = () => {
         setShowMenu(!showMenu);
@@ -135,58 +140,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import LogOut from "./LogOut";
-
-// const NavBar = () => {
-//     const token = localStorage.getItem("token");
-//     const loggedIn = token !== null;
-
-//     return (
-//         <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-6">
-//         <div className="flex items-center flex-shrink-0 text-white mr-6">
-//             <span className="font-semibold text-xl tracking-tight">iThink</span>
-//         </div>
-//         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-//             <div className="text-sm lg:flex-grow">
-//             {loggedIn && (
-//                 <>
-//                 <Link
-//                     to="/add-user"
-//                     className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-400 mr-4"
-//                 >
-//                     Add User
-//                 </Link>
-//                 </>
-//             )}
-//             </div>
-//             <div>
-//             {loggedIn ? (
-//                 <>
-//                 <LogOut />
-//                 </>
-//             ) : (
-//                 <>
-//                 <Link
-//                     to="/register"
-//                     className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-800 hover:bg-white mt-4 lg:mt-0 mr-4"
-//                 >
-//                     Create Account
-//                 </Link>
-//                 <Link
-//                     to="/login"
-//                     className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-800 hover:bg-white mt-4 lg:mt-0"
-//                 >
-//                     Log In
-//                 </Link>
-//                 </>
-//             )}
-//             </div>
-//         </div>
-//         </nav>
-//     );
-// };
-
-// export default NavBar;
