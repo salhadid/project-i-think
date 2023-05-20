@@ -1,3 +1,18 @@
+// import React from "react";
+
+// const LogOut = ({ handleLogout }) => {
+//     return (
+//         <button
+//         onClick={handleLogout}
+//         className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-800 hover:bg-white mt-4 lg:mt-0"
+//         >
+//         Log Out
+//         </button>
+//     );
+// };
+
+// export default LogOut;
+
 import React from "react";
 
 const LogOut = () => {
@@ -19,7 +34,7 @@ const LogOut = () => {
     return (
         <button
         onClick={handleLogout}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-800 hover:bg-white mt-4 lg:mt-0"
         >
         Logout
         </button>
