@@ -9,6 +9,9 @@ import WeatherWidget from "./WeatherWidget";
 import UpdateUser from "./UpdateUser";
 import HomeLoggedIn from "./HomeLoggedIn";
 import HomeLoggedOut from "./HomeLoggedOut";
+import Footer from "./Footer";
+import CreateProject from "./CreateProject";
+import Voting from "./Voting";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -28,12 +31,15 @@ function App() {
           <Route path="/ai" element={<AI />} />
           <Route path="/WeatherWidget" element={<WeatherWidget />} />
           <Route path="/update" element={<UpdateUser />} />
+          <Route path="/create/project" element={<CreateProject />} />
+          <Route path="/voting" element={<Voting />} />
           <Route
             path="/"
             element={loggedIn ? <HomeLoggedIn /> : <HomeLoggedOut />}
           />
         </Routes>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }
