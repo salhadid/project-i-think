@@ -9,6 +9,7 @@ function AI() {
     const [noList, setNoList] = useState([]);
     const [maybeList, setMaybeList] = useState([]);
     const [processing, setProcessing] = useState(false);
+    const [customYes, setCustomYes] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,16 +22,15 @@ function AI() {
     };
 
     const handleSubmitYes = async () => {
-    setProcessing(true);
-    for (let message of yesList) {
+        setProcessing(true);
+        for (let message of yesList) {
         await axios.post("http://localhost:8000/chat/submit", {
-        message,
+            message,
         });
-    }
-    setProcessing(false);
-    setYesList([]);
+        }
+        setProcessing(false);
+        setYesList([]);
     };
-
 
     const handleYes = () => {
         setYesList([...yesList, idea]);
@@ -206,6 +206,24 @@ function AI() {
                         </button>
                         </li>
                     ))}
+                    <li className="bg-green-100 p-2 rounded border-2 border-green-500 flex justify-between items-center">
+                        <input
+                            type="text"
+                            className="w-full p-2 border-2 border-purple-600 rounded"
+                            value={customYes}
+                            onChange={(e) => setCustomYes(e.target.value)}
+                            placeholder="Add custom response"
+                        />
+                        <button
+                            className="bg-purple-600 hover:bg-purple-700 text-white rounded px-2 py-1"
+                            onClick={() => {
+                            setYesList([...yesList, customYes]);
+                            setCustomYes("");
+                            }}
+                        >
+                            +
+                        </button>
+                    </li>
                     </ul>
                 </div>
                 <div>
@@ -261,9 +279,11 @@ function AI() {
                     </ul>
                     <div className="flex justify-center items-center h-full">
                     <button
-                    onClick={handleSubmitYes}
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    >SUBMIT For Voting</button>
+                        onClick={handleSubmitYes}
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    >
+                        SUBMIT For Voting
+                    </button>
                     </div>
                 </div>
                 </div>
@@ -287,6 +307,7 @@ export default AI;
 //     const [noList, setNoList] = useState([]);
 //     const [maybeList, setMaybeList] = useState([]);
 //     const [processing, setProcessing] = useState(false);
+//     const [customYes, setCustomYes] = useState("");
 
 //     const handleSubmit = async (e) => {
 //         e.preventDefault();
@@ -300,9 +321,11 @@ export default AI;
 
 //     const handleSubmitYes = async () => {
 //     setProcessing(true);
-//     await axios.post("http://localhost:8000/chat/submit", {
-//         yesList,
-//     });
+//     for (let message of yesList) {
+//         await axios.post("http://localhost:8000/chat/submit", {
+//         message,
+//         });
+//     }
 //     setProcessing(false);
 //     setYesList([]);
 //     };
@@ -405,7 +428,7 @@ export default AI;
 //     };
 
 //     return (
-//         <div className="flex items-center justify-center">
+//         <div className="flex items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 h-screen">
 //         <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
 //             <h1 className="text-3xl font-semibold text-purple-600 mb-6 text-center">
 //             AI Chatbot
@@ -534,9 +557,12 @@ export default AI;
 //                         </li>
 //                     ))}
 //                     </ul>
-//                     <button onClick={handleSubmitYes}>
-//                         SUBMIT
-//                     </button>
+//                     <div className="flex justify-center items-center h-full">
+//                     <button
+//                     onClick={handleSubmitYes}
+//                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+//                     >SUBMIT For Voting</button>
+//                     </div>
 //                 </div>
 //                 </div>
 //             </>
