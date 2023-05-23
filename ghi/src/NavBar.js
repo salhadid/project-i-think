@@ -55,6 +55,7 @@ const NavBar = () => {
             { to: "/update", text: "Update Account" },
             { to: "/create/project", text: "Create Project" },
             { to: "/voting", text: "Voting" },
+            { to: "/projectForm", text: "Project Form" },
             { text: "Logout", onClick: handleLogout },
         ]
         : [

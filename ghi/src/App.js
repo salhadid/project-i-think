@@ -12,6 +12,7 @@ import HomeLoggedOut from "./HomeLoggedOut";
 import Footer from "./Footer";
 import CreateProject from "./CreateProject";
 import Voting from "./Voting";
+import ProjectForm from "./ProjectForm";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -33,6 +34,7 @@ function App() {
           <Route path="/update" element={<UpdateUser />} />
           <Route path="/create/project" element={<CreateProject />} />
           <Route path="/voting" element={<Voting />} />
+          <Route path="/projectForm" element={<ProjectForm />} />
           <Route
             path="/"
             element={loggedIn ? <HomeLoggedIn /> : <HomeLoggedOut />}

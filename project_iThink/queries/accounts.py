@@ -61,11 +61,10 @@ class AccountQueries(Queries):
         self.collection.delete_one({"_id": user_id})
         return True
 
-
-def get_all_accounts(self) -> list[AccountOut]:
-    db = self.collection.find()
-    accounts = []
-    for document in db:
-        document["id"] = str(document["_id"])
-        accounts.append(AccountOut(**document))
-    return accounts
+    def get_all_accounts(self) -> list[AccountOut]:
+        db = self.collection.find()
+        accounts = []
+        for document in db:
+            document["id"] = str(document["_id"])
+            accounts.append(AccountOut(**document))
+        return accounts
