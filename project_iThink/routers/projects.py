@@ -94,4 +94,3 @@ async def assign_user_to_project(
 
     new_role = RoleIn(user_id=user_id, project_id=project_id, role=role)
     return role_queries.create_role(new_role)
-
