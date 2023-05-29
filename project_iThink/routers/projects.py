@@ -3,6 +3,7 @@ from fastapi import (
     HTTPException,
     status,
     APIRouter,
+    Body,
 )
 from queries.projects import (
     ProjectIn,
@@ -15,6 +16,7 @@ from queries.roles import (
     RoleQueries,
 )
 from authenticator import authenticator
+from bson import ObjectId
 
 
 router = APIRouter()
@@ -94,3 +96,37 @@ async def assign_user_to_project(
 
     new_role = RoleIn(user_id=user_id, project_id=project_id, role=role)
     return role_queries.create_role(new_role)
+
+
+@router.post("/api/projects/{project_id}/add_response")
+async def add_response_to_project(
+    project_id: str,
+    response: str = Body(...),
+    project_queries: ProjectQueries = Depends(),
+    account_data: dict = Depends(authenticator.try_get_current_account_data),
+):
+    try:
+        if account_data is None or "id" not in account_data:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="User authentication required",
+            )
+
+        project = project_queries.collection.find_one({"_id": ObjectId(project_id)})
+
+        if not project:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Project not found",
+            )
+
+        if "responses" not in project:
+            project["responses"] = []
+
+        project['responses'].append(response)
+        project_queries.collection.update_one({"_id": ObjectId(project_id)}, {"$set": project})
+
+        return {"message": "Response added to project"}
+    except Exception as e:
+        print(str(e))
+        raise HTTPException(status_code=500, detail="Internal server error KILL ME NAOOO!!!!")
