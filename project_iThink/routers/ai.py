@@ -5,7 +5,6 @@ import json
 from queries.ai import AiQueries, Message
 
 
-
 OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 
 router = APIRouter()
