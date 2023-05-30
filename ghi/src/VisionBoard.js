@@ -29,7 +29,7 @@ const VisionBoard = () => {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Vision Board</h1>
-      <div className="VisionBoard" style={{ height: "500px" }}>
+      <div className="VisionBoard" style={{ height: "750px" }}>
         <Excalidraw
           width={width}
           height={height}
