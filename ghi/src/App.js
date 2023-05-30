@@ -13,6 +13,7 @@ import Footer from "./Footer";
 import CreateProject from "./CreateProject";
 import Voting from "./Voting";
 import ProjectForm from "./ProjectForm";
+import VisionBoard from "./VisionBoard";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -35,6 +36,7 @@ function App() {
           <Route path="/create/project" element={<CreateProject />} />
           <Route path="/voting" element={<Voting />} />
           <Route path="/projectForm" element={<ProjectForm />} />
+          <Route path="/VisionBoard" element={<VisionBoard />} />
           <Route
             path="/"
             element={loggedIn ? <HomeLoggedIn /> : <HomeLoggedOut />}
