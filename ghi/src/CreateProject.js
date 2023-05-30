@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function CreateProject() {
     const [title, setTitle] = useState("");
@@ -31,10 +33,12 @@ function CreateProject() {
         setTitle("");
         setDescription("");
         setIsSuccess(true);
+        toast.success("New project was submitted successfully! 😺");
     };
 
     return (
         <div className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen flex items-center justify-center">
+            <ToastContainer />
         <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
             <h1 className="text-2xl font-bold mb-4">Create Project</h1>
             <form onSubmit={handleSubmit}>

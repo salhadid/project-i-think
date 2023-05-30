@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function UpdateUser() {
   const [email, setEmail] = useState("");
@@ -51,7 +53,7 @@ function UpdateUser() {
     axios
       .patch(`http://localhost:8000/api/accounts/${email}`, data)
       .then((response) => {
-        alert("Account updated successfully!");
+        toast.success("Account updated successfully!👀");
         // Clear form fields
         setPassword("");
         setConfirmPassword("");
@@ -67,6 +69,7 @@ function UpdateUser() {
 
   return (
     <div className="bg-gradient-to-br from-blue-500 to-purple-500 min-h-screen flex items-center justify-center">
+      <ToastContainer />
       <form
         onSubmit={handleSubmit}
         className="bg-white rounded-lg shadow-lg p-8 max-w-md mx-auto"

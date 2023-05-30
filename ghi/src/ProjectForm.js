@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ProjectForm() {
   const [projects, setProjects] = useState([]);
@@ -52,6 +54,7 @@ function ProjectForm() {
       setSelectedProject(""); // clear selected project
       setSelectedUser(""); // clear selected user
       setRole(""); // clear role input
+      toast.success("Woohoo! You added a a member! Now get to work! 💻");
     } catch (error) {
       console.error("Server responded with an error:", error.response.data);
       setError(
@@ -63,6 +66,7 @@ function ProjectForm() {
 
   return (
     <div className="flex items-center justify-center h-screen bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">
+      <ToastContainer />
       <form
         className="bg-white p-8 rounded-lg shadow-lg"
         onSubmit={handleSubmit}
@@ -126,167 +130,3 @@ function ProjectForm() {
 }
 
 export default ProjectForm;
-
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-
-// function ProjectForm() {
-//     const [projects, setProjects] = useState([]);
-//     const [users, setUsers] = useState([]);
-//     const [selectedProject, setSelectedProject] = useState("");
-//     const [selectedUser, setSelectedUser] = useState("");
-//     const [role, setRole] = useState("");
-
-//     useEffect(() => {
-//         axios
-//         .get("http://localhost:8000/api/projects/list/")
-//         .then((response) => setProjects(response.data))
-//         .catch((error) => console.error(error));
-
-//         axios
-//         .get("http://localhost:8000/api/accounts/")
-//         .then((response) => setUsers(response.data))
-//         .catch((error) => console.error(error));
-//     }, []);
-
-//     const handleSubmit = (event) => {
-//     event.preventDefault();
-
-//     const url = `http://localhost:8000/api/projects/${selectedProject}/assign?user_id=${selectedUser}&role=${role}`;
-
-//     fetch(url, {
-//         method: "POST",
-//         headers: {
-//         "Content-Type": "application/json",
-//         },
-//     })
-//         .then((response) => {
-//         if (!response.ok) {
-//             throw new Error("Network response was not ok");
-//         }
-//         console.log(response.json());
-//         alert("Successfully assigned user to the project.");
-//         })
-//         .catch((error) => {
-//         console.error(error);
-//         alert("Error assigning user to the project.");
-//         });
-//     };
-
-//     return (
-//         <form onSubmit={handleSubmit}>
-//         <select
-//             value={selectedProject}
-//             onChange={(e) => setSelectedProject(e.target.value)}
-//         >
-//             <option value="">Select Project</option>
-//             {projects.map((project) => (
-//             <option key={project.id} value={project.id}>
-//                 {project.title}
-//             </option>
-//             ))}
-//         </select>
-
-//         <select
-//             value={selectedUser}
-//             onChange={(e) => setSelectedUser(e.target.value)}
-//         >
-//             <option value="">Select User</option>
-//             {users.map((user) => (
-//             <option key={user.id} value={user.id}>
-//                 {user.email}
-//             </option>
-//             ))}
-//         </select>
-
-//         <input
-//             type="text"
-//             value={role}
-//             onChange={(e) => setRole(e.target.value)}
-//             placeholder="Role"
-//             required
-//         />
-
-//         <button type="submit">Assign</button>
-//         </form>
-//     );
-// }
-
-// export default ProjectForm;
-
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-
-// function ProjectForm() {
-//     const [projects, setProjects] = useState([]);
-//     const [users, setUsers] = useState([]);
-//     const [selectedProject, setSelectedProject] = useState("");
-//     const [selectedUser, setSelectedUser] = useState("");
-//     const [role, setRole] = useState("");
-
-//     useEffect(() => {
-//         axios
-//         .get("http://localhost:8000/api/projects/list/")
-//         .then((response) => setProjects(response.data))
-//         .catch((error) => console.error(error));
-
-//         axios
-//         .get("http://localhost:8000/api/accounts/")
-//         .then((response) => setUsers(response.data))
-//         .catch((error) => console.error(error));
-//     }, []);
-
-//     const handleSubmit = (event) => {
-//         event.preventDefault();
-
-//         axios
-//         .post(
-//             `http://localhost:8000/api/projects/${selectedProject}/assign?user_id=${selectedUser}&role=${role}`
-//         )
-//         .then((response) => {
-//             console.log(response.data);
-//             alert("Successfully assigned user to the project.");
-//         })
-//         .catch((error) => console.error(error));
-//     };
-
-//     return (
-//         <form onSubmit={handleSubmit}>
-//         <select
-//             value={selectedProject}
-//             onChange={(e) => setSelectedProject(e.target.value)}
-//         >
-//             <option value="">Select Project</option>
-//             {projects.map((project) => (
-//             <option key={project.id} value={project.id}>
-//                 {project.title}
-//             </option>
-//             ))}
-//         </select>
-
-//         <select
-//             value={selectedUser}
-//             onChange={(e) => setSelectedUser(e.target.value)}
-//         >
-//             <option value="">Select User</option>
-//             {users.map((user) => (
-//             <option key={user.id} value={user.id}>
-//                 {user.email}
-//             </option>
-//             ))}
-//         </select>
-
-//         <input
-//             type="text"
-//             value={role}
-//             onChange={(e) => setRole(e.target.value)}
-//             placeholder="Role"
-//             required
-//         />
-
-//         <button type="submit">Assign</button>
-//         </form>
-//     );
-// }
-
-// export default ProjectForm;

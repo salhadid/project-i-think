@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddUserForm = () => {
     const [email, setEmail] = useState("");
@@ -27,7 +29,7 @@ const AddUserForm = () => {
         });
         console.log(response.data);
         resetForm();
-        alert(`Congratulations, account was successfully created!`);
+        toast.success(`Congratulations, account was successfully created!`);
         } catch (error) {
         console.log(error.response.data);
         }
@@ -51,6 +53,7 @@ const AddUserForm = () => {
 
     return (
         <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">
+        <ToastContainer />
         <div className="w-full max-w-md p-4 bg-white rounded-lg shadow-md">
             <h1 className="text-3xl font-bold text-center mb-8">
             Create an Account
