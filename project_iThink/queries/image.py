@@ -14,3 +14,11 @@ class ImageQueries(Queries):
     async def save_image(self, image: UploadFile):
         image_id = self.gridfs.put(await image.read(), filename=image.filename)
         return image_id
+
+    def get_all_images(self):
+        db = self.collection.find()
+        images = []
+        for document in db:
+            document["id"] = str(document["_id"])
+            images.append(document)
+        return images
