@@ -16,9 +16,13 @@ class ImageQueries(Queries):
         return image_id
 
     def get_all_images(self):
-        db = self.collection.find()
-        images = []
-        for document in db:
-            document["id"] = str(document["_id"])
-            images.append(document)
-        return images
+        files = self.gridfs.find()
+        return [{"filename": file.filename, "_id": str(file._id)} for file in files]
+
+    # def get_all_images(self):
+    #     db = self.gridfs.find()
+    #     images = []
+    #     for document in db:
+    #         document["id"] = str(document["_id"])
+    #         images.append(document)
+    #     return images
