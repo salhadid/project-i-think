@@ -22,3 +22,16 @@ For the account creation page, I have added a double password verification field
 The navigation bar was a significant undertaking, but I have simplified it by creating two lists that automatically populate based on the user's login status. This makes it incredibly easy for our team to add new routes to the navigation bar, as they only need to add the name and pathing to the list.
 
 Finally, I have fixed the display logic for the navigation bar, ensuring that it always displays based on the user's login status, regardless of screen size. Additionally, I have added a refresh on logout to prevent users from being redirected to the previously rendered logged-in home page.
+
+
+During the period of May 21-29, I made several modifications and added new features to our website. On the homepage for logged-out users, I implemented a custom PNG logo featuring a gear with the iThink Technology branding. Additionally, I created a footer using Tailwind CSS for styling purposes. To simulate real-world website conditions, I added a cookie popup to the homepage.
+
+I also made significant improvements to the chatbot's logic, making it more conversational and visually appealing. I redesigned the chatbot to resemble an instant messenger and utilized Tailwind CSS to center it on the screen. I also removed the scroll bar to give it a cleaner appearance.
+
+Moving on to our Create Account page, I added a toast container to display success messages. Similarly, on the Update Account page, I incorporated a toast success message.
+
+On the Login Form page, I added a delay of three seconds before refreshing and reloading the page to allow the toast success message to display properly.
+
+On the AI page, I worked on the backend to add a response field to the Projects model. I also created a drop-down menu for users to select a project and assign responses directly to it as a list of responses. However, I encountered some issues with the Axios library, which resulted in a RateLimitError from the OpenAI API. It appears that repeated responses on this page can cause the key to freeze between responses, resulting in delays of up to 30 seconds.
+
+Finally, I added toast success messages to the Create Project and Project Form pages. Overall, these modifications and new features have improved the functionality and user experience of our website.

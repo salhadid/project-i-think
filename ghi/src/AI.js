@@ -13,7 +13,7 @@ function AI() {
     const [processing, setProcessing] = useState(false);
     const [customYes, setCustomYes] = useState("");
     const [projects, setProjects] = useState([]);
-    const [selectedProject, setSelectedProject] = useState(null);
+    const [selectedProject, setSelectedProject] = useState('');
 
     useEffect(() => {
         const loadProjects = async () => {

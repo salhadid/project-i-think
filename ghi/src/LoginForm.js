@@ -91,7 +91,7 @@ const LoginForm = () => {
                 url = "https://api.adviceslip.com/advice";
                 break;
             case "Jokes":
-                url = "https://sv443.net/jokeapi/v2/joke/Any";
+                url = "https://sv443.net/jokeapi/v2/joke/Any?safe-mode";
                 break;
             default:
                 url = "";
