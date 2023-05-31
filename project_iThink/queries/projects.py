@@ -1,3 +1,4 @@
+from bson import ObjectId
 from pydantic import BaseModel
 from typing import Optional, List
 from .client import Queries
@@ -32,6 +33,13 @@ class ProjectQueries(Queries):
             document["id"] = str(document["_id"])
             projects.append(ProjectOut(**document))
         return projects
+
+    def delete_project(self, project_id: str) -> None:
+        """Delete a project by id."""
+        self.collection.delete_one({"_id": ObjectId(project_id)})
+
+    
+
 
 
 
