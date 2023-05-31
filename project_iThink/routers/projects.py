@@ -45,6 +45,23 @@ async def create_project(
     return project
 
 
+@router.delete("/api/projects/{project_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_project(
+    project_id: str,
+    project_queries: ProjectQueries = Depends(),
+    account_data: dict = Depends(authenticator.try_get_current_account_data),
+):
+    if not account_data:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="User not authenticated",
+        )
+
+    project_queries.delete_project(project_id)
+
+
+
+
 # @router.post("/api/projects/{project_id}/assign", response_model=RoleOut)
 # async def assign_user_to_project(
 #     project_id: str,
@@ -130,3 +147,6 @@ async def add_response_to_project(
     except Exception as e:
         print(str(e))
         raise HTTPException(status_code=500, detail="Internal server error KILL ME NAOOO!!!!")
+
+
+# testing merge request updated 6

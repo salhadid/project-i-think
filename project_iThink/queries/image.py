@@ -1,6 +1,8 @@
 import gridfs
 from fastapi import UploadFile
 from .client import Queries
+from bson import ObjectId
+
 
 class ImageQueries(Queries):
     DB_NAME = "db-name"
@@ -15,14 +17,19 @@ class ImageQueries(Queries):
         image_id = self.gridfs.put(await image.read(), filename=image.filename)
         return image_id
 
+    def get_image(self, filename: str):
+        grid_out = self.gridfs.find_one({"filename": filename})
+        if not grid_out:
+            raise ValueError(f"No file with name: {filename}")
+        return grid_out.read()
+
     def get_all_images(self):
         files = self.gridfs.find()
-        return [{"filename": file.filename, "_id": str(file._id)} for file in files]
+        return [{"filename": file.filename, "_id": str(file._id)} for file in files if self.gridfs.exists(file._id)]
 
-    # def get_all_images(self):
-    #     db = self.gridfs.find()
-    #     images = []
-    #     for document in db:
-    #         document["id"] = str(document["_id"])
-    #         images.append(document)
-    #     return images
+    async def delete_image(self, image_id: str):
+        try:
+            self.gridfs.delete(ObjectId(image_id))
+            return "Image deleted successfully"
+        except Exception as e:
+            return str(e)
