@@ -147,3 +147,6 @@ async def add_response_to_project(
     except Exception as e:
         print(str(e))
         raise HTTPException(status_code=500, detail="Internal server error KILL ME NAOOO!!!!")
+
+
+# testing merge request close
