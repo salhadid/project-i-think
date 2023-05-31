@@ -1,5 +1,6 @@
 #Database
 mongo-data/*
+!mongo-data/data/
 
 .env
 # Byte-compiled / optimized / DLL files
