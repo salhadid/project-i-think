@@ -14,6 +14,7 @@ import CreateProject from "./CreateProject";
 import Voting from "./Voting";
 import ProjectForm from "./ProjectForm";
 import VisionBoard from "./VisionBoard";
+import ImageList from "./ImageList";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -37,6 +38,7 @@ function App() {
           <Route path="/voting" element={<Voting />} />
           <Route path="/projectForm" element={<ProjectForm />} />
           <Route path="/VisionBoard" element={<VisionBoard />} />
+          <Route path="/ImageList" element={<ImageList />} />
           <Route
             path="/"
             element={loggedIn ? <HomeLoggedIn /> : <HomeLoggedOut />}

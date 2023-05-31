@@ -17,15 +17,12 @@ function AI() {
 
     useEffect(() => {
         const loadProjects = async () => {
-            const response = await axios.get("http://localhost:8000/api/projects/list");
+            const response = await axios.get("http://localhost:8000/api/projects/list/");
             setProjects(response.data);
         };
 
         loadProjects();
     }, []);
-
-
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -63,8 +60,6 @@ function AI() {
     setYesList([]);
     toast.success("Responses have been submitted successfully! 🥳");
     };
-
-
 
     const handleYes = () => {
         setYesList([...yesList, idea]);

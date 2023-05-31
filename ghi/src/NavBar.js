@@ -57,6 +57,7 @@ const NavBar = () => {
         { to: "/voting", text: "Voting" },
         { to: "/projectForm", text: "Project Form" },
         { to: "/VisionBoard", text: "Vision Board" },
+        { to: "/ImageList", text: "Image List" },
         { text: "Logout", onClick: handleLogout },
       ]
     : [
@@ -65,7 +66,7 @@ const NavBar = () => {
       ];
 
   return (
-    <header className="bg-gradient-to-r from-gray-900 to-black shadow">
+    <header className="bg-gradient-to-r from-purple-900 to-black shadow z-50 fixed w-full" style={{ top: 0 }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">

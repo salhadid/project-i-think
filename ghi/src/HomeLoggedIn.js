@@ -5,6 +5,8 @@ import heroImage from "./static/hero-ithink.png";
 function HomeLoggedIn() {
     const [user, setUser] = useState({});
     const [projects, setProjects] = useState([]);
+    const [images, setImages] = useState([]);
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     useEffect(() => {
         // Fetch user data
@@ -36,7 +38,49 @@ function HomeLoggedIn() {
         .catch((error) => {
             alert(`Error fetching projects: ${error}`);
         });
+
+        // Fetch images
+        axios
+        .get(`http://localhost:8000/api/images/list/`, {
+            headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
+        .then((response) => {
+            const imageData = response.data;
+            setImages(imageData);
+        })
+        .catch((error) => {
+            alert(`Error fetching images: ${error}`);
+        });
     }, []);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) =>
+            prevIndex === images.length - 1 ? 0 : prevIndex + 1
+        );
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [images]);
+
+    const handleDeleteProject = (projectId) => {
+        axios
+        .delete(`http://localhost:8000/api/projects/${projectId}`, {
+            headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
+        .then((response) => {
+            alert(`Project deleted successfully`);
+            setProjects((prevProjects) =>
+            prevProjects.filter((project) => project.id !== projectId)
+            );
+        })
+        .catch((error) => {
+            alert(`Error deleting project: ${error}`);
+        });
+    };
 
     return (
         <div className="bg-gray-100 min-h-screen">
@@ -62,6 +106,16 @@ function HomeLoggedIn() {
                     >
                     Log Out
                     </button>
+                    <button
+                    type="button"
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700 transition ease-in-out duration-150 ml-4"
+                    onClick={() => {
+                        window.location.href =
+                        "http://localhost:3000/create/project";
+                    }}
+                    >
+                    Add a new project
+                    </button>
                 </div>
                 </div>
             </div>
@@ -77,7 +131,10 @@ function HomeLoggedIn() {
                     {projects.length > 0 ? (
                     <ul>
                         {projects.map((project) => (
-                        <li key={project.id} className="mb-2">
+                        <li
+                            key={project.id}
+                            className="mb-2 flex items-center justify-between"
+                        >
                             <a
                             href={`http://localhost:8000/projects/list/${project.id}/`}
                             className="text-blue-500 hover:underline"
@@ -85,6 +142,13 @@ function HomeLoggedIn() {
                             {project.title}{" "}
                             {/* Update the property name to 'title' */}
                             </a>
+                            <button
+                            type="button"
+                            className="text-red-500 hover:text-red-700"
+                            onClick={() => handleDeleteProject(project.id)}
+                            >
+                            ❌
+                            </button>
                         </li>
                         ))}
                     </ul>
@@ -93,6 +157,19 @@ function HomeLoggedIn() {
                     )}
                 </div>
                 </div>
+            </div>
+            <div className="bg-white rounded-lg shadow p-6 mb-8">
+                <h2 className="text-lg font-bold mb-4">Images</h2>
+                {images.length > 0 ? (
+                <div className="flex justify-center items-center">
+                    <img
+                    src={`http://localhost:8000/api/images/${images[currentImageIndex].filename}`}
+                    alt={images[currentImageIndex].filename}
+                    />
+                </div>
+                ) : (
+                <p>No images found.</p>
+                )}
             </div>
             <div className="bg-white rounded-lg shadow p-6">
                 <h2 className="text-lg font-bold mb-4">Other Information</h2>
