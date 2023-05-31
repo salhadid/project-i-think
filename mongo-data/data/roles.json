@@ -1,0 +1,8 @@
+[{
+  "_id": {
+    "$oid": "647778f05dfa48156d12482f"
+  },
+  "user_id": "647778c45dfa48156d12482d",
+  "project_id": "647778f05dfa48156d12482e",
+  "role": "manager"
+}]

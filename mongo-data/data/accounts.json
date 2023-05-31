@@ -1,3 +1,8 @@
-{
-  "HI": "TeST"
-}
+[{
+  "_id": {
+    "$oid": "647778c45dfa48156d12482d"
+  },
+  "email": "test@test.com",
+  "password": "$2b$12$mG8/kkdnAzP/QCw9sUQaDO9ES.OMCsv2wV.E.4Vt9YWZbsy4SP4qi",
+  "full_name": "test"
+}]

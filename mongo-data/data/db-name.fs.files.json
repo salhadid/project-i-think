@@ -1,0 +1,11 @@
+[{
+  "_id": {
+    "$oid": "647779495dfa48156d124830"
+  },
+  "filename": "Untitled-2023-05-31-1243.png",
+  "chunkSize": 261120,
+  "length": 27762,
+  "uploadDate": {
+    "$date": "2023-05-31T16:43:53.466Z"
+  }
+}]
