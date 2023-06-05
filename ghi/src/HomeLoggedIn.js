@@ -83,10 +83,10 @@ function HomeLoggedIn() {
     };
 
     return (
-        <div className="bg-gray-100 min-h-screen">
+        <div className="bg-gray-100 min-h-screen pt-20">
             <nav className="bg-white shadow">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between h-16 pt-150">
+                    <div className="flex items-center justify-between h-16 pt-150 pt-25">
                         <div className="flex-shrink-0">
                             <img
                                 src={heroImage}
@@ -108,7 +108,7 @@ function HomeLoggedIn() {
                                         window.location.reload();
                                     }}
                                 >
-                                    Log Out
+                                    Log Out ✌️
                                 </button>
                                 <button
                                     type="button"
@@ -118,7 +118,17 @@ function HomeLoggedIn() {
                                             "http://localhost:3000/create/project";
                                     }}
                                 >
-                                    Add a new project
+                                    Add a new project ➕
+                                </button>
+                                <button
+                                    type="button"
+                                    className="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700 transition ease-in-out duration-150 ml-4"
+                                    onClick={() => {
+                                        window.location.href =
+                                            "http://localhost:3000/editResponses";
+                                    }}
+                                >
+                                    Edit Responses 📝
                                 </button>
                             </div>
                         </div>

@@ -50,21 +50,21 @@ const NavBar = () => {
 
     const links = loggedIn
         ? [
-              { to: "/", text: "Home" },
-              { to: "/ai", text: "AI" },
-              { to: "/update", text: "Update Account" },
-              { to: "/create/project", text: "Create Project" },
-              { to: "/voting", text: "Voting" },
-              { to: "/projectForm", text: "Project Form" },
-              { to: "/VisionBoard", text: "Vision Board" },
-              { to: "/ImageList", text: "Image List" },
-              { to: "/editResponses", text: "Edit Responses" },
-              { text: "Logout", onClick: handleLogout },
-          ]
-        : [
-              { to: "/register", text: "Create Account" },
-              { to: "/login", text: "Log In" },
-          ];
+            { to: "/", text: "Home" },
+            { to: "/ai", text: "AI" },
+            { to: "/update", text: "Update Account" },
+            { to: "/create/project", text: "Create Project" },
+            { to: "/voting", text: "Voting" },
+            { to: "/projectForm", text: "Project Form" },
+            { to: "/VisionBoard", text: "Vision Board" },
+            { to: "/ImageList", text: "Image List" },
+            { to: "/editResponses", text: "Edit Responses" },
+            { text: "Logout", onClick: handleLogout },
+        ]
+    : [
+            { to: "/register", text: "Create Account" },
+            { to: "/login", text: "Log In" },
+        ];
 
     return (
         <header
