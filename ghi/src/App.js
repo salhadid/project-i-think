@@ -16,6 +16,7 @@ import ProjectForm from "./ProjectForm";
 import VisionBoard from "./VisionBoard";
 import ImageList from "./ImageList";
 import EditResponses from "./editResponses";
+import Contact1 from "./contact";
 
 function App() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -41,6 +42,7 @@ function App() {
                     <Route path="/VisionBoard" element={<VisionBoard />} />
                     <Route path="/ImageList" element={<ImageList />} />
                     <Route path="/editResponses" element={<EditResponses />} />
+                    <Route path="/contact" element={<Contact1 />} />
                     <Route
                         path="/"
                         element={

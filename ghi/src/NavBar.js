@@ -59,10 +59,12 @@ const NavBar = () => {
             { to: "/VisionBoard", text: "Vision Board" },
             { to: "/ImageList", text: "Image List" },
             { to: "/editResponses", text: "Edit Responses" },
+            { to: "/contact", text: "Contact" },
             { text: "Logout", onClick: handleLogout },
         ]
     : [
             { to: "/register", text: "Create Account" },
+            { to: "/contact", text: "Contact" },
             { to: "/login", text: "Log In" },
         ];
 
