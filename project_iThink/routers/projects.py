@@ -143,10 +143,27 @@ async def add_response_to_project(
         project['responses'].append(response)
         project_queries.collection.update_one({"_id": ObjectId(project_id)}, {"$set": project})
 
-        return {"message": "Response added to project"}
+        return {"message": response}
     except Exception as e:
         print(str(e))
-        raise HTTPException(status_code=500, detail="Internal server error KILL ME NAOOO!!!!")
+        raise HTTPException(status_code=500, detail="Internal server error!")
 
 
-# testing merge request updated 6
+@router.get("/api/projects/{id}/")
+async def get_project_by_id(id: str, repo: ProjectQueries = Depends()):
+    project = repo.get_project_by_id(id)
+    project["id"] = str(project["_id"])
+    return ProjectOut(**project)
+
+
+@router.put("/api/projects/{project_id}/remove_idea/{idea_index}", response_model=ProjectOut)
+def delete_idea(
+    project_id: str,
+    response: str,
+    repo: ProjectQueries = Depends()
+):
+    collection = repo.remove_idea(project_id, response)
+    if collection is None:
+        response.status_code = 404
+    else:
+        return collection

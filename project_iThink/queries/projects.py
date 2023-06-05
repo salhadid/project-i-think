@@ -2,6 +2,7 @@ from bson import ObjectId
 from pydantic import BaseModel
 from typing import Optional, List
 from .client import Queries
+from pymongo.collection import ReturnDocument
 
 
 class ProjectIn(BaseModel):
@@ -37,3 +38,17 @@ class ProjectQueries(Queries):
     def delete_project(self, project_id: str) -> None:
         """Delete a project by id."""
         self.collection.delete_one({"_id": ObjectId(project_id)})
+
+    def remove_idea(self, id: str, response: str):
+            collection = self.collection.find_one({"_id":ObjectId(id)})
+            ideas = collection["responses"]
+            ideas.pop(ideas.index(response))
+            self.collection.find_one_and_update(
+                {"_id": ObjectId(id)},
+                {"$set": collection},
+                return_document=ReturnDocument.AFTER,
+            )
+            return ProjectOut(**collection, id=id)
+
+    def get_project_by_id(self, id: str):
+        return self.collection.find_one({"_id": ObjectId(id)})

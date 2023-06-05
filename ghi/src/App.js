@@ -15,39 +15,43 @@ import Voting from "./Voting";
 import ProjectForm from "./ProjectForm";
 import VisionBoard from "./VisionBoard";
 import ImageList from "./ImageList";
+import EditResponses from "./editResponses";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    setLoggedIn(token !== null);
-  }, []);
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        setLoggedIn(token !== null);
+    }, []);
 
-  return (
-    <BrowserRouter>
-      <NavBar />
-      <div>
-        <Routes>
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/register" element={<AddUserForm />} />
-          <Route path="/ai" element={<AI />} />
-          <Route path="/WeatherWidget" element={<WeatherWidget />} />
-          <Route path="/update" element={<UpdateUser />} />
-          <Route path="/create/project" element={<CreateProject />} />
-          <Route path="/voting" element={<Voting />} />
-          <Route path="/projectForm" element={<ProjectForm />} />
-          <Route path="/VisionBoard" element={<VisionBoard />} />
-          <Route path="/ImageList" element={<ImageList />} />
-          <Route
-            path="/"
-            element={loggedIn ? <HomeLoggedIn /> : <HomeLoggedOut />}
-          />
-        </Routes>
-      </div>
-      <Footer />
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <NavBar />
+            <div>
+                <Routes>
+                    <Route path="/login" element={<LoginForm />} />
+                    <Route path="/register" element={<AddUserForm />} />
+                    <Route path="/ai" element={<AI />} />
+                    <Route path="/WeatherWidget" element={<WeatherWidget />} />
+                    <Route path="/update" element={<UpdateUser />} />
+                    <Route path="/create/project" element={<CreateProject />} />
+                    <Route path="/voting" element={<Voting />} />
+                    <Route path="/projectForm" element={<ProjectForm />} />
+                    <Route path="/VisionBoard" element={<VisionBoard />} />
+                    <Route path="/ImageList" element={<ImageList />} />
+                    <Route path="/editResponses" element={<EditResponses />} />
+                    <Route
+                        path="/"
+                        element={
+                            loggedIn ? <HomeLoggedIn /> : <HomeLoggedOut />
+                        }
+                    />
+                </Routes>
+            </div>
+            <Footer />
+        </BrowserRouter>
+    );
 }
 
 export default App;
