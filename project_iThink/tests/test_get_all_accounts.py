@@ -10,9 +10,9 @@ class AccountQueriesMock():
 
 def test_get_all_accounts():
     app.dependency_overrides[AccountQueries] = AccountQueriesMock
-    response = client.get("/api/accounts")
+    response = client.get("/api/accounts/")
     assert response.status_code == 200
-    assert response.json() == {"accounts": []}
+    assert response.json() == []
     app.dependency_overrides = {}
 
 def test_create_user():
