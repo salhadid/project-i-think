@@ -1,3 +1,150 @@
+## Getting started
+
+You have a project repository, now what? The next section
+lists all of the deliverables that are due at the end of the
+week. Below is some guidance for getting started on the
+tasks for this week.
+
+## Install Extensions
+
+- Prettier: <https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode>
+- Black Formatter: <https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter>
+
+## Deliverables
+
+- [ ] Wire-frame diagrams
+- [ ] API documentation
+- [ ] Project is deployed to Caprover (BE, DB) & GitLab-pages (FE)
+- [ ] GitLab issue board is setup and in use (or project management tool of choice)
+- [ ] Journals
+
+## Project layout
+
+The layout of the project is just like all of the projects
+you did with `docker-compose` in module #2. You will create
+a directory in the root of the repository for each service
+that you add to your project just like those previous
+projects were setup.
+
+### Directories
+
+Several directories have been added to your project. The
+directories `docs` and `journals` are places for you and
+your team-mates to, respectively, put any documentation
+about your project that you create and to put your
+project-journal entries. See the _README.md_ file in each
+directory for more info.
+
+The other directories, `ghi` and `sample_service`, are
+sample services, that you can start building off of or use
+as a reference point.
+
+Inside of `ghi` is a minimal React app that has an "under
+construction" page. It is setup similarly to all of the
+other React projects that you have worked on.
+
+Inside of `sample_service` is a minimal FastAPI application.
+"Where are all the files?" you might ask? Well, the
+`main.py` file is the whole thing, and go take look inside
+of it... There's not even much in there..., hmm? That is
+FastAPI, we'll learn more about it in the coming days. Can
+you figure out what this little web-application does even
+though you haven't learned about FastAPI yet?
+
+Also in `sample_service` is a directory for your migrations.
+If you choose to use PostgreSQL, then you'll want to use
+migrations to control your database. Unlike Django, where
+migrations were automatically created for you, you'll write
+yours by hand using DDL. Don't worry about not knowing what
+DDL means; we have you covered. There's a sample migration
+in there that creates two tables so you can see what they
+look like.
+
+The sample Dockerfile and Dockerfile.dev run your migrations
+for you automatically.
+
+### Other files
+
+The following project files have been created as a minimal
+starting point. Please follow the guidance for each one for
+a most successful project.
+
+- `docker-compose.yaml`: there isn't much in here, just a
+  **really** simple UI and FastAPI service. Add services
+  (like a database) to this file as you did with previous
+  projects in module #2.
+- `.gitlab-ci.yml`: This is your "ci/cd" file where you will
+  configure automated unit tests, code quality checks, and
+  the building and deployment of your production system.
+  Currently, all it does is deploy an "under construction"
+  page to your production UI on GitLab and a sample backend
+  to CapRover. We will learn much more about this file.
+- `.gitignore`: This is a file that prevents unwanted files
+  from getting added to your repository, files like
+  `pyc` files, `__pycache__`, etc. We've set it up so that
+  it has a good default configuration for Python projects.
+- `.env.sample`: This file is a template to copy when
+  creating environment variables for your team. Create a
+  copy called `.env` and put your own passwords in here
+  without fear of it being committed to git (see `.env`
+  listed in `.gitignore`). You can also put team related
+  environment variables in here, things like api and signing
+  keys that shouldn't be committed; these should be
+  duplicated in your deployed environments.
+
+## How to complete the initial deploy
+
+There will be further guidance on completing the initial
+deployment, but it just consists of these steps:
+
+### Setup GitLab repo/project
+
+- make sure this project is in a group. If it isn't, stop
+  now and move it to a GitLab group
+- remove the fork relationship: In GitLab go to:
+
+  Settings -> General -> Advanced -> Remove fork relationship
+
+- add these GitLab CI/CD variables:
+  - PUBLIC_URL : this is your gitlab pages URL
+  - SAMPLE_SERVICE_API_HOST: enter "blank" for now
+
+#### Your GitLab pages URL
+
+You can't find this in GitLab until after you've done a deploy
+but you can figure it out yourself from your GitLab project URL.
+
+If this is your project URL
+
+https://gitlab.com/GROUP_NAME/PROJECT_NAME
+
+then your GitLab pages URL will be
+
+https://GROUP_NAME.gitlab.io/PROJECT_NAME
+
+### Initialize CapRover
+
+1. Attain IP address and domain from an instructor
+1. Follow the steps in the CD Cookbook in Learn.
+
+### Update GitLab CI/CD variables
+
+Copy the service URL for your CapRover service and then paste
+that into the value for the SAMPLE_SERVICE_API_HOST CI/CD variable
+in GitLab.
+
+### Deploy it
+
+Merge a change into main to kick off the initial deploy. Once the build pipeline
+finishes you should be able to see an "under construction" page on your GitLab
+pages site.
+
+
+
+----------
+
+
+
 # Main.py
 
 This is a FastAPI server that includes routers for various endpoints and middleware for handling CORS requests.
@@ -999,177 +1146,291 @@ npm install react react-router-dom tailwindcss
 
 The `HomeLoggedOut` component uses CSS classes from the Tailwind CSS library, such as `min-h-screen`, `bg-gradient-to-r`, `from-purple-400`, `via-pink-500`, `to-red-500`, `text-white`, `flex`, `flex-col`, `items-center`, `justify-center`, `space-y-16`, `pt-40`, `text-center`, `text-6xl`, `font-bold`, `text-2xl`, `max-w-lg`, `mt-8`, `sm:flex-row`, `sm:space-x-4`, `justify-center`, `px-8`, `py-3`, `text-lg`, `font-semibold`, `rounded-full`, `bg-white`, `text-purple-800`, `hover:bg-gray-200`, `transition-colors`, `duration-300`, `border`, `hover:text-purple-800`, `overflow-y-auto`, `bg-white`, `p-2`, `rounded-xl`, `max-w-2xl`, `w-full`, `h-96`, `w-1/4`.
 ----------
+# ImageList Component
 
+The `ImageList` component is a React functional component that displays a list of images, allowing the user to upload, delete, and vote on images. It uses the `useState` and `useEffect` hooks to manage the state of the component and includes functions to handle image upload, image deletion, and image voting. The component also uses `fetch` to make HTTP requests to the backend API.
 
+## Props
 
+The `ImageList` component does not take any props.
 
+## Usage
 
+To use the `ImageList` component, import it into your React component and render it in your JSX:
 
+```jsx
+import ImageList from './ImageList';
 
+function MyComponent() {
+  return (
+    <div>
+      <ImageList />
+    </div>
+  );
+}
+```
 
+## Dependencies
 
+The `ImageList` component depends on the following packages:
 
+- `react`
+- `tailwindcss`
 
+Make sure to install them before using the component:
 
+```bash
+npm install react tailwindcss
+```
 
+## Styling
 
+The `ImageList` component uses CSS classes from the Tailwind CSS library, such as `bg-gradient-to-r`, `from-purple-400`, `via-pink-500`, `to-red-500`, `min-h-screen`, `pt-20`, `grid`, `grid-cols-3`, `gap-4`, `p-4`, `relative`, `w-full`, `h-64`, `object-cover`, `rounded-lg`, `scale-150`, `transform`, `transition`, `absolute`, `right-0`, `top-0`, `p-1`, `text-2xl`, `cursor-pointer`, `left-0`, `bottom-0`, `left-1/2`, `top-1/2`, `-translate-x-1/2`, `-translate-y-1/2`, `text-white`, `my-4`, `bg-white`, `rounded-lg`, `text-black`, `px-4`, `py-2`, `inline-block`, `fixed`, and `bottom-0`.
+----------
+## LoginForm Component
 
+The `LoginForm` component is a React functional component that displays a login form and allows users to log in to the application. It uses the `useState` and `useEffect` hooks to manage the state of the component and includes functions to handle form submission, form reset, password visibility, and API selection. The component also uses `axios` to make HTTP requests to the backend API and `react-toastify` to display success or error messages.
 
+### Props
 
+The `LoginForm` component does not take any props.
 
+### Usage
 
+To use the `LoginForm` component, import it into your React component and render it in your JSX:
 
+```jsx
+import LoginForm from './LoginForm';
 
+function MyComponent() {
+  return (
+    <div>
+      <LoginForm />
+    </div>
+  );
+}
+```
 
+### Dependencies
 
+The `LoginForm` component depends on the following packages:
 
+- `react`
+- `axios`
+- `react-router-dom`
+- `react-spring`
+- `react-toastify`
+- `tailwindcss`
 
+Make sure to install them before using the component:
 
+```bash
+npm install react axios react-router-dom react-spring react-toastify tailwindcss
+```
 
+### Styling
 
+The `LoginForm` component uses CSS classes from the Tailwind CSS library, such as `flex`, `flex-col`, `h-screen`, `bg-gradient-to-r`, `from-purple-400`, `via-pink-500`, `to-red-500`, `text-white`, `justify-center`, `items-center`, `space-y-8`, `max-w-screen-lg`, `mx-auto`, `mt-4`, `p-10`, `bg-white`, `rounded-lg`, `shadow-md`, `w-full`, `appearance-none`, `border`, `py-2`, `px-3`, `text-gray-700`, `leading-tight`, `focus:outline-none`, `focus:shadow-outline`, `pr-10`, `absolute`, `right-0`, `top-0`, `mr-3`, `mt-3`, `cursor-pointer`, `form-checkbox`, `h-5`, `w-5`, `font-bold`, `text-lg`, `text-blue-500`, `hover:bg-blue-700`, `rounded`, `focus:shadow-outline`, `text-2xl`, `mb-4`, `text-center`, `mt-4`, `rounded-lg`.
+----------
+## LogOut Component
 
+The `LogOut` component is a React functional component that displays a logout button for the user. It checks for the presence of a token in the local storage and removes it when the user clicks the logout button. The component also reloads the page after the user logs out and displays an alert message to confirm the successful logout.
 
+### Props
 
+The `LogOut` component does not take any props.
 
+### Usage
 
+To use the `LogOut` component, import it into your React component and render it in your JSX:
 
-## Getting started
+```jsx
+import LogOut from './LogOut';
 
-You have a project repository, now what? The next section
-lists all of the deliverables that are due at the end of the
-week. Below is some guidance for getting started on the
-tasks for this week.
+function MyComponent() {
+  return (
+    <div>
+      <LogOut />
+    </div>
+  );
+}
+```
 
-## Install Extensions
+### Dependencies
 
-- Prettier: <https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode>
-- Black Formatter: <https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter>
+The `LogOut` component does not have any external dependencies.
 
-## Deliverables
+### Styling
 
-- [ ] Wire-frame diagrams
-- [ ] API documentation
-- [ ] Project is deployed to Caprover (BE, DB) & GitLab-pages (FE)
-- [ ] GitLab issue board is setup and in use (or project management tool of choice)
-- [ ] Journals
+The `LogOut` component uses CSS classes to style the logout button, such as `inline-block`, `text-sm`, `px-4`, `py-2`, `leading-none`, `border`, `rounded`, `text-white`, `hover:border-transparent`, `hover:text-gray-800`, `hover:bg-white`, `mt-4`, and `lg:mt-0`.
+----------
+# NavBar Component
 
-## Project layout
+The `NavBar` component is a React functional component that displays a navigation bar at the top of the page. It includes a logo, a search bar for weather data, and links to different pages depending on whether the user is logged in or not. The component uses `useState` and `useEffect` hooks to manage the state of the component and makes HTTP requests to the OpenWeatherMap API using `axios`.
 
-The layout of the project is just like all of the projects
-you did with `docker-compose` in module #2. You will create
-a directory in the root of the repository for each service
-that you add to your project just like those previous
-projects were setup.
+## Props
 
-### Directories
+The `NavBar` component does not take any props.
 
-Several directories have been added to your project. The
-directories `docs` and `journals` are places for you and
-your team-mates to, respectively, put any documentation
-about your project that you create and to put your
-project-journal entries. See the _README.md_ file in each
-directory for more info.
+## Usage
 
-The other directories, `ghi` and `sample_service`, are
-sample services, that you can start building off of or use
-as a reference point.
+To use the `NavBar` component, import it into your React component and render it in your JSX:
 
-Inside of `ghi` is a minimal React app that has an "under
-construction" page. It is setup similarly to all of the
-other React projects that you have worked on.
+```jsx
+import NavBar from './NavBar';
 
-Inside of `sample_service` is a minimal FastAPI application.
-"Where are all the files?" you might ask? Well, the
-`main.py` file is the whole thing, and go take look inside
-of it... There's not even much in there..., hmm? That is
-FastAPI, we'll learn more about it in the coming days. Can
-you figure out what this little web-application does even
-though you haven't learned about FastAPI yet?
+function MyComponent() {
+  return (
+    <div>
+      <NavBar />
+    </div>
+  );
+}
+```
 
-Also in `sample_service` is a directory for your migrations.
-If you choose to use PostgreSQL, then you'll want to use
-migrations to control your database. Unlike Django, where
-migrations were automatically created for you, you'll write
-yours by hand using DDL. Don't worry about not knowing what
-DDL means; we have you covered. There's a sample migration
-in there that creates two tables so you can see what they
-look like.
+## Dependencies
 
-The sample Dockerfile and Dockerfile.dev run your migrations
-for you automatically.
+The `NavBar` component depends on the following packages:
 
-### Other files
+- `react`
+- `axios`
+- `react-router-dom`
+- `tailwindcss`
 
-The following project files have been created as a minimal
-starting point. Please follow the guidance for each one for
-a most successful project.
+Make sure to install them before using the component:
 
-- `docker-compose.yaml`: there isn't much in here, just a
-  **really** simple UI and FastAPI service. Add services
-  (like a database) to this file as you did with previous
-  projects in module #2.
-- `.gitlab-ci.yml`: This is your "ci/cd" file where you will
-  configure automated unit tests, code quality checks, and
-  the building and deployment of your production system.
-  Currently, all it does is deploy an "under construction"
-  page to your production UI on GitLab and a sample backend
-  to CapRover. We will learn much more about this file.
-- `.gitignore`: This is a file that prevents unwanted files
-  from getting added to your repository, files like
-  `pyc` files, `__pycache__`, etc. We've set it up so that
-  it has a good default configuration for Python projects.
-- `.env.sample`: This file is a template to copy when
-  creating environment variables for your team. Create a
-  copy called `.env` and put your own passwords in here
-  without fear of it being committed to git (see `.env`
-  listed in `.gitignore`). You can also put team related
-  environment variables in here, things like api and signing
-  keys that shouldn't be committed; these should be
-  duplicated in your deployed environments.
+```bash
+npm install react axios react-router-dom tailwindcss
+```
 
-## How to complete the initial deploy
+## Styling
 
-There will be further guidance on completing the initial
-deployment, but it just consists of these steps:
+The `NavBar` component uses CSS classes from the Tailwind CSS library, such as `bg-gradient-to-r`, `from-purple-900`, `to-black`, `shadow`, `z-50`, `fixed`, `w-full`, `max-w-7xl`, `mx-auto`, `px-4`, `sm:px-6`, `lg:px-8`, `flex`, `justify-between`, `h-16`, `items-center`, `text-2xl`, `font-bold`, `text-gray-300`, `border`, `rounded`, `px-2`, `py-1`, `w-24`, `text-black`, `bg-dark`, `hover:bg-grey`, `text-white`, `font-bold`, `inline-flex`, `text-sm`, `font-medium`, `-mr-1`, `ml-2`, `h-5`, `w-5`, `text-left`, `absolute`, `right-0`, `mt-2`, `w-56`, `rounded-md`, `shadow-lg`, `bg-white`, `ring-1`, `ring-black`, `ring-opacity-5`, `py-1`, `block`, `text-sm`, `text-gray-700`, `hover:bg-gray-100`, `role`, `menu`, `aria-orientation`, `vertical`, `aria-labelledby`, `options-menu`, `button`, and `p`.
+----------
+# Pricing Component
 
-### Setup GitLab repo/project
+The `Pricing` component is a React functional component that displays a pricing table for a hypothetical brainstorming tool called iThink. It uses Tailwind CSS for styling and includes three pricing options: Basic, Pro, and Enterprise. The component also includes icons for checking and crossing off features, as well as buttons for subscribing to each pricing option.
 
-- make sure this project is in a group. If it isn't, stop
-  now and move it to a GitLab group
-- remove the fork relationship: In GitLab go to:
+## Props
 
-  Settings -> General -> Advanced -> Remove fork relationship
+The `Pricing` component does not take any props.
 
-- add these GitLab CI/CD variables:
-  - PUBLIC_URL : this is your gitlab pages URL
-  - SAMPLE_SERVICE_API_HOST: enter "blank" for now
+## Usage
 
-#### Your GitLab pages URL
+To use the `Pricing` component, import it into your React component and render it in your JSX:
 
-You can't find this in GitLab until after you've done a deploy
-but you can figure it out yourself from your GitLab project URL.
+```jsx
+import Pricing from './Pricing';
 
-If this is your project URL
+function MyComponent() {
+  return (
+    <div>
+      <Pricing />
+    </div>
+  );
+}
+```
 
-https://gitlab.com/GROUP_NAME/PROJECT_NAME
+## Dependencies
 
-then your GitLab pages URL will be
+The `Pricing` component depends on the following packages:
 
-https://GROUP_NAME.gitlab.io/PROJECT_NAME
+- `react`
+- `tailwindcss`
 
-### Initialize CapRover
+Make sure to install them before using the component:
 
-1. Attain IP address and domain from an instructor
-1. Follow the steps in the CD Cookbook in Learn.
+```bash
+npm install react tailwindcss
+```
 
-### Update GitLab CI/CD variables
+## Styling
 
-Copy the service URL for your CapRover service and then paste
-that into the value for the SAMPLE_SERVICE_API_HOST CI/CD variable
-in GitLab.
+The `Pricing` component uses CSS classes from the Tailwind CSS library, such as `bg-gradient-to-tr`, `from-purple-700`, `via-blue-500`, `to-green-300`, `font-body`, `font-title`, `text-white`, `text-5xl`, `text-lg`, `text-gray-600`, `rounded-2xl`, `shadow-xl`, `grid`, `grid-cols-3`, `max-w-7xl`, `flex`, `items-baseline`, `mb-1`, `text-xl`, `font-semibold`, `uppercase`, `tracking-wider`, `p-4`, `w-28`, `h-1.5`, `bg-green-500`, `rounded-3xl`, `inline-flex`, `line-through`, `py-2`, `px-10`, `text-gray-100`, `font-medium`, `tracking-wide`, `antialiased`, `transition`, `duration-100`, `ease-in`, `transform`, `hover:scale-105`, and `hover:bg-green-600`.
+----------
+# ProjectForm Component
 
-### Deploy it
+The `ProjectForm` component is a React functional component that allows the user to assign a user to a certain project with a specific role. It uses the `useState` and `useEffect` hooks to manage the state of the component and includes functions to handle project and user selection, role input and submission. The component also uses `axios` to make HTTP requests to the backend API and `react-toastify` to display success and error messages.
 
-Merge a change into main to kick off the initial deploy. Once the build pipeline
-finishes you should be able to see an "under construction" page on your GitLab
-pages site.
+## Props
+
+The `ProjectForm` component does not take any props.
+
+## Usage
+
+To use the `ProjectForm` component, import it into your React component and render it in your JSX:
+
+```jsx
+import ProjectForm from './ProjectForm';
+
+function MyComponent() {
+  return (
+    <div>
+      <ProjectForm />
+    </div>
+  );
+}
+```
+
+## Dependencies
+
+The `ProjectForm` component depends on the following packages:
+
+- `react`
+- `axios`
+- `react-toastify`
+- `tailwindcss`
+
+Make sure to install them before using the component:
+
+```bash
+npm install react axios react-toastify tailwindcss
+```
+
+## Styling
+
+The `ProjectForm` component uses CSS classes from the Tailwind CSS library, such as `flex`, `items-center`, `justify-center`, `bg-gradient-to-r`, `from-purple-500`, `via-pink-500`, `to-red-500`, `bg-white`, `p-8`, `rounded-lg`, `shadow-lg`, `text-2xl`, `mb-4`, `block`, `w-full`, `p-2`, `border`, `border-gray-300`, `rounded-md`, `focus:outline-none`, `text-red-500`, `text-green-500`, `bg-blue-500`, `hover:bg-blue-700`, `text-white`, `font-bold`, `py-2`, `px-4`, and `focus:outline-none`.
+----------
+# UpdateUser Component
+
+The `UpdateUser` component is a React functional component that allows the user to update their account information, including email, password, and full name. It uses the `useState` and `useEffect` hooks to manage the state of the component and includes functions to handle form submission and password visibility. The component also uses `axios` to make HTTP requests to the backend API and `react-toastify` to display success and error messages.
+
+## Props
+
+The `UpdateUser` component does not take any props.
+
+## Usage
+
+To use the `UpdateUser` component, import it into your React component and render it in your JSX:
+
+```jsx
+import UpdateUser from './UpdateUser';
+
+function MyComponent() {
+  return (
+    <div>
+      <UpdateUser />
+    </div>
+  );
+}
+```
+
+## Dependencies
+
+The `UpdateUser` component depends on the following packages:
+
+- `react`
+- `axios`
+- `react-toastify`
+- `tailwindcss`
+
+Make sure to install them before using the component:
+
+```bash
+npm install react axios react-toastify tailwindcss
+```
+
+## Styling
+
+The `UpdateUser` component uses CSS classes from the Tailwind CSS library, such as `bg-gradient-to-br`, `from-blue-500`, `to-purple-500`, `min-h-screen`, `flex`, `items-center`, `justify-center`, `bg-white`, `rounded-lg`, `shadow-lg`, `p-8`, `max-w-md`, `mx-auto`, `mb-4`, `block`, `font-bold`, `text-gray-700`, `w-full`, `px-3`, `py-2`, `border`, `rounded-lg`, `shadow-sm`, `focus:outline-none`, `focus:shadow-outline-blue`, `focus:border-blue-300`, `relative`, `absolute`, `top-0`, `right-0`, `m-2`, `text-gray-500`, `hover:text-gray-700`, `text-blue-500`, `hover:bg-blue-700`, `text-white`, `font-bold`, `py-2`, `px-4`, `focus:outline-none`, `focus:shadow-outline-blue`, and `active:bg-blue-800`.
+----------
