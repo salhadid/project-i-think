@@ -699,7 +699,7 @@ npm install react react-icons react-google-maps @heroicons/react tailwindcss
 
 ## Styling
 
-The `ContactUs` component uses CSS classes from the Tailwind CSS library, such as `mx-auto`, `py-10`, `text-green-500`, and `max-w-7xl`. You can customize the styling by modifying the CSS file or using inline styles.
+The `ContactUs` component uses CSS classes from the Tailwind CSS library, such as `mx-auto`, `py-10`, `text-green-500`, and `max-w-7xl`. 
 
 ----------
 
@@ -742,7 +742,7 @@ npm install react tailwindcss
 
 ## Styling
 
-The `CookiePopup` component uses CSS classes from the Tailwind CSS library, such as `bg-gray-900`, `text-white`, `p-4`, `max-w-7xl`, `flex`, `items-center`, `rounded-lg`, and `mr-4`. You can customize the styling by modifying the CSS file or using inline styles.
+The `CookiePopup` component uses CSS classes from the Tailwind CSS library, such as `bg-gray-900`, `text-white`, `p-4`, `max-w-7xl`, `flex`, `items-center`, `rounded-lg`, and `mr-4`.
 
 ----------
 # CreateProject Component
@@ -785,7 +785,7 @@ npm install react react-toastify tailwindcss
 
 ## Styling
 
-The `CreateProject` component uses CSS classes from the Tailwind CSS library, such as `bg-gradient-to-r`, `from-purple-400`, `via-pink-500`, `to-red-500`, `min-h-screen`, `flex`, `items-center`, `justify-center`, `max-w-md`, `bg-white`, `rounded-lg`, `shadow-lg`, `p-8`, `text-2xl`, `font-bold`, `mb-4`, `block`, `text-gray-700`, `border`, `rounded`, `w-full`, `py-2`, `px-3`, `leading-tight`, `focus:outline-none`, `focus:shadow-outline`, `flex`, `bg-blue-500`, `hover:bg-blue-700`, `text-white`, `font-bold`, `disabled:opacity-50`, `disabled:cursor-wait`, `mt-4`, `bg-green-100`, `border-l-4`, `border-green-500`, `text-green-700`, and `p-4`. You can customize the styling by modifying the CSS file or using inline styles.
+The `CreateProject` component uses CSS classes from the Tailwind CSS library, such as `bg-gradient-to-r`, `from-purple-400`, `via-pink-500`, `to-red-500`, `min-h-screen`, `flex`, `items-center`, `justify-center`, `max-w-md`, `bg-white`, `rounded-lg`, `shadow-lg`, `p-8`, `text-2xl`, `font-bold`, `mb-4`, `block`, `text-gray-700`, `border`, `rounded`, `w-full`, `py-2`, `px-3`, `leading-tight`, `focus:outline-none`, `focus:shadow-outline`, `flex`, `bg-blue-500`, `hover:bg-blue-700`, `text-white`, `font-bold`, `disabled:opacity-50`, `disabled:cursor-wait`, `mt-4`, `bg-green-100`, `border-l-4`, `border-green-500`, `text-green-700`, and `p-4`.
 ----------
 # EditResponses Component
 
@@ -827,7 +827,7 @@ npm install react axios tailwindcss
 
 ## Styling
 
-The `EditResponses` component uses CSS classes from the Tailwind CSS library, such as `bg-gradient-to-r`, `from-purple-900`, `via-violet-500`, `to-blue-300`, `flex`, `items-center`, `justify-center`, `bg-white`, `rounded-lg`, `shadow-lg`, `p-8`, `text-center`, `text-4xl`, `text-blue-600`, `font-bold`, `mb-8`, `font-sans`, `mb-6`, `font-medium`, `text-lg`, `text-sky-400`, `font-semibold`, `flex-col`, `gap-2`, `flex-grow`, `font-light`, `border`, `rounded-l`, `px-1`, `py-1`, `flex-1`, `ml-4`, and `mt-5`. You can customize the styling by modifying the CSS file or using inline styles.
+The `EditResponses` component uses CSS classes from the Tailwind CSS library, such as `bg-gradient-to-r`, `from-purple-900`, `via-violet-500`, `to-blue-300`, `flex`, `items-center`, `justify-center`, `bg-white`, `rounded-lg`, `shadow-lg`, `p-8`, `text-center`, `text-4xl`, `text-blue-600`, `font-bold`, `mb-8`, `font-sans`, `mb-6`, `font-medium`, `text-lg`, `text-sky-400`, `font-semibold`, `flex-col`, `gap-2`, `flex-grow`, `font-light`, `border`, `rounded-l`, `px-1`, `py-1`, `flex-1`, `ml-4`, and `mt-5`.
 --------------------
 # Faq Component
 
@@ -872,7 +872,7 @@ npm install react @headlessui/react @heroicons/react/outline tailwindcss
 
 ## Styling
 
-The `Faq` component uses CSS classes from the Tailwind CSS library, such as `bg-gray-900`, `max-w-4xl`, `mx-auto`, `flex`, `col`, `items-center`, `text-center`, `text-3xl`, `sm:text-5xl`, `text-green-400`, `font-bold`, `tracking-wider`, `mt-8`, `mb-4`, `relative`, `overflow-hidden`, `block`, `absolute`, `inset-0`, `bg-gray-800`, `border-t-2`, `border-b-2`, `text-gray-200`, `py-4`, `px-6`, `cursor-pointer`, `text-lg`, `md:text-xl`, `font-medium`, `w-6`, `h-6`, `animate-glitch`, `text-base`, `md:text-lg`, `rounded-lg`, `shadow-xl`, `transform`, `hover:scale-105`, `transition-all`, `duration-500`, and `mb-10`. You can customize the styling by modifying the CSS file or using inline styles.
+The `Faq` component uses CSS classes from the Tailwind CSS library, such as `bg-gray-900`, `max-w-4xl`, `mx-auto`, `flex`, `col`, `items-center`, `text-center`, `text-3xl`, `sm:text-5xl`, `text-green-400`, `font-bold`, `tracking-wider`, `mt-8`, `mb-4`, `relative`, `overflow-hidden`, `block`, `absolute`, `inset-0`, `bg-gray-800`, `border-t-2`, `border-b-2`, `text-gray-200`, `py-4`, `px-6`, `cursor-pointer`, `text-lg`, `md:text-xl`, `font-medium`, `w-6`, `h-6`, `animate-glitch`, `text-base`, `md:text-lg`, `rounded-lg`, `shadow-xl`, `transform`, `hover:scale-105`, `transition-all`, `duration-500`, and `mb-10`.
 ----------
 # Footer Component
 
@@ -913,9 +913,50 @@ npm install react tailwindcss
 
 ## Styling
 
-The `Footer` component uses CSS classes from the Tailwind CSS library, such as `bg-gradient-to-r`, `from-purple-900`, `to-black`, `shadow`, `py-4`, `container`, `mx-auto`, `flex`, `justify-between`, `items-center`, `px-4`, `md:px-0`, `text-white`, `w-full`, `text-center`, `flex`, `justify-end`, `w-16`, `h-16`. You can customize the styling by modifying the CSS file or using inline styles.
+The `Footer` component uses CSS classes from the Tailwind CSS library, such as `bg-gradient-to-r`, `from-purple-900`, `to-black`, `shadow`, `py-4`, `container`, `mx-auto`, `flex`, `justify-between`, `items-center`, `px-4`, `md:px-0`, `text-white`, `w-full`, `text-center`, `flex`, `justify-end`, `w-16`, `h-16`.
 ----------
+## HomeLoggedIn Component
 
+The `HomeLoggedIn` component is a React functional component that displays the dashboard for a logged-in user. It uses the `useState` and `useEffect` hooks to manage the state of the component and includes functions to handle project deletion. The component also uses `axios` to make HTTP requests to the backend API.
+
+### Props
+
+The `HomeLoggedIn` component does not take any props.
+
+### Usage
+
+To use the `HomeLoggedIn` component, import it into your React component and render it in your JSX:
+
+```jsx
+import HomeLoggedIn from './HomeLoggedIn';
+
+function MyComponent() {
+  return (
+    <div>
+      <HomeLoggedIn />
+    </div>
+  );
+}
+```
+
+### Dependencies
+
+The `HomeLoggedIn` component depends on the following packages:
+
+- `react`
+- `axios`
+- `tailwindcss`
+
+Make sure to install them before using the component:
+
+```bash
+npm install react axios tailwindcss
+```
+
+### Styling
+
+The `HomeLoggedIn` component uses CSS classes from the Tailwind CSS library, such as `bg-gray-100`, `min-h-screen`, `pt-20`, `bg-white`, `shadow`, `max-w-7xl`, `mx-auto`, `px-4`, `sm:px-6`, `lg:px-8`, `flex`, `items-center`, `justify-between`, `h-16`, `pt-150`, `pt-25`, `flex-shrink-0`, `w-16`, `h-16`, `hidden`, `md:block`, `text-gray-600`, `font-medium`, `mr-4`, `inline-flex`, `px-4`, `py-2`, `border`, `border-transparent`, `text-base`, `leading-6`, `font-medium`, `rounded-md`, `text-white`, `bg-blue-600`, `hover:bg-blue-500`, `focus:outline-none`, `focus:border-blue-700`, `focus:shadow-outline-blue`, `active:bg-blue-700`, `transition`, `ease-in-out`, `duration-150`, `ml-4`, `text-red-500`, `hover:text-red-700`, `mb-4`, `text-2xl`, `font-bold`, `flex-wrap`, `-mx-4`, `w-full`, `md:w-1/2`, `mb-4`, `md:mb-0`, `bg-white`, `rounded-lg`, `shadow`, `p-6`, `text-lg`, `mb-2`, `flex`, `justify-between`, `hover:underline`, `text-blue-500`, `text-red-500`, `hover:text-red-700`, `bg-white`, `flex`, `justify-center`, `items-center`, `bg-white`, `rounded-lg`, `shadow`, `p-6`, `bg-white`, `rounded-lg`, `shadow`, `p-6`.
+----------
 
 
 
