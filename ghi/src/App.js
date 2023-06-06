@@ -17,6 +17,9 @@ import VisionBoard from "./VisionBoard";
 import ImageList from "./ImageList";
 import EditResponses from "./editResponses";
 import Contact1 from "./contact";
+import Pricing from "./pricing";
+import Faq from "./faq";
+
 
 function App() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -43,6 +46,8 @@ function App() {
                     <Route path="/ImageList" element={<ImageList />} />
                     <Route path="/editResponses" element={<EditResponses />} />
                     <Route path="/contact" element={<Contact1 />} />
+                    <Route path="/pricing" element={<Pricing />} />
+                    <Route path="/faq" element={<Faq />} />
                     <Route
                         path="/"
                         element={

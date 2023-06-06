@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import AIChat from "./AIChat";
+import SocialShare from "./share"; // import the SocialShare component from share.js
 import heroImage from "./static/hero-ithink.png";
 import CookiePopup from "./CookiePopup";
 
@@ -34,6 +35,7 @@ const HomeLoggedOut = () => {
             </div>
         </div>
         <div className="w-1/4">
+        <SocialShare />
             <img src={heroImage} alt="iThink" className="w-full" />
         </div>
         </div>

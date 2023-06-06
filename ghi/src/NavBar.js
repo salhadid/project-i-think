@@ -65,6 +65,8 @@ const NavBar = () => {
     : [
             { to: "/register", text: "Create Account" },
             { to: "/contact", text: "Contact" },
+            { to: "/pricing", text: "Pricing"},
+            { to: "/faq", text: "FAQ"},
             { to: "/login", text: "Log In" },
         ];
 
