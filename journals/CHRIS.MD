@@ -35,3 +35,15 @@ On the Login Form page, I added a delay of three seconds before refreshing and r
 On the AI page, I worked on the backend to add a response field to the Projects model. I also created a drop-down menu for users to select a project and assign responses directly to it as a list of responses. However, I encountered some issues with the Axios library, which resulted in a RateLimitError from the OpenAI API. It appears that repeated responses on this page can cause the key to freeze between responses, resulting in delays of up to 30 seconds.
 
 Finally, I added toast success messages to the Create Project and Project Form pages. Overall, these modifications and new features have improved the functionality and user experience of our website.
+
+Today, I worked on the ContactUs component of my React app. This component displays information about our company and provides ways for users to contact us.
+
+To start, I used the Heroicons library to import icons for a phone, location marker, and email. These icons were used to display our contact information in the Infos Container section of the component.
+
+I also added a Dots Background to the component for visual appeal. This was achieved by using SVG patterns to create dots of different sizes and colors.
+
+Next, I embedded a Google map in the Map Container section of the component to help users locate our office.
+
+Finally, I added a Meet the Devs section to the component to showcase our team members. Each team member's photo and name were displayed in a circular container, along with a link to their LinkedIn profile.
+
+Overall, I'm happy with how the ContactUs component turned out. It provides users with a clear and visually appealing way to contact us and learn more about our team.
