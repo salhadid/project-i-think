@@ -699,7 +699,7 @@ npm install react react-icons react-google-maps @heroicons/react tailwindcss
 
 ## Styling
 
-The `ContactUs` component uses CSS classes from the Tailwind CSS library, such as `mx-auto`, `py-10`, `text-green-500`, and `max-w-7xl`. 
+The `ContactUs` component uses CSS classes from the Tailwind CSS library, such as `mx-auto`, `py-10`, `text-green-500`, and `max-w-7xl`.
 
 ----------
 
@@ -957,7 +957,48 @@ npm install react axios tailwindcss
 
 The `HomeLoggedIn` component uses CSS classes from the Tailwind CSS library, such as `bg-gray-100`, `min-h-screen`, `pt-20`, `bg-white`, `shadow`, `max-w-7xl`, `mx-auto`, `px-4`, `sm:px-6`, `lg:px-8`, `flex`, `items-center`, `justify-between`, `h-16`, `pt-150`, `pt-25`, `flex-shrink-0`, `w-16`, `h-16`, `hidden`, `md:block`, `text-gray-600`, `font-medium`, `mr-4`, `inline-flex`, `px-4`, `py-2`, `border`, `border-transparent`, `text-base`, `leading-6`, `font-medium`, `rounded-md`, `text-white`, `bg-blue-600`, `hover:bg-blue-500`, `focus:outline-none`, `focus:border-blue-700`, `focus:shadow-outline-blue`, `active:bg-blue-700`, `transition`, `ease-in-out`, `duration-150`, `ml-4`, `text-red-500`, `hover:text-red-700`, `mb-4`, `text-2xl`, `font-bold`, `flex-wrap`, `-mx-4`, `w-full`, `md:w-1/2`, `mb-4`, `md:mb-0`, `bg-white`, `rounded-lg`, `shadow`, `p-6`, `text-lg`, `mb-2`, `flex`, `justify-between`, `hover:underline`, `text-blue-500`, `text-red-500`, `hover:text-red-700`, `bg-white`, `flex`, `justify-center`, `items-center`, `bg-white`, `rounded-lg`, `shadow`, `p-6`, `bg-white`, `rounded-lg`, `shadow`, `p-6`.
 ----------
+# HomeLoggedOut Component
 
+The `HomeLoggedOut` component is a React functional component that displays the landing page for a user who is not logged in. It includes a brief description of the app, a call to action to sign up or log in, an AI chatbot, and a social share component. The component also includes a cookie popup.
+
+## Props
+
+The `HomeLoggedOut` component does not take any props.
+
+## Usage
+
+To use the `HomeLoggedOut` component, import it into your React component and render it in your JSX:
+
+```jsx
+import HomeLoggedOut from './HomeLoggedOut';
+
+function MyComponent() {
+  return (
+    <div>
+      <HomeLoggedOut />
+    </div>
+  );
+}
+```
+
+## Dependencies
+
+The `HomeLoggedOut` component depends on the following packages:
+
+- `react`
+- `react-router-dom`
+- `tailwindcss`
+
+Make sure to install them before using the component:
+
+```bash
+npm install react react-router-dom tailwindcss
+```
+
+## Styling
+
+The `HomeLoggedOut` component uses CSS classes from the Tailwind CSS library, such as `min-h-screen`, `bg-gradient-to-r`, `from-purple-400`, `via-pink-500`, `to-red-500`, `text-white`, `flex`, `flex-col`, `items-center`, `justify-center`, `space-y-16`, `pt-40`, `text-center`, `text-6xl`, `font-bold`, `text-2xl`, `max-w-lg`, `mt-8`, `sm:flex-row`, `sm:space-x-4`, `justify-center`, `px-8`, `py-3`, `text-lg`, `font-semibold`, `rounded-full`, `bg-white`, `text-purple-800`, `hover:bg-gray-200`, `transition-colors`, `duration-300`, `border`, `hover:text-purple-800`, `overflow-y-auto`, `bg-white`, `p-2`, `rounded-xl`, `max-w-2xl`, `w-full`, `h-96`, `w-1/4`.
+----------
 
 
 
