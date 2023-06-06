@@ -25,6 +25,19 @@ def test_get_project_by_id(mock_project_id, client):
     assert response.json()["responses"] == fake_project["responses"]
     assert response.json()["id"] == fake_project["_id"]
 
+@patch("queries.projects.ProjectQueries.get_ideas")
+def test_get_ideas(mock_get_ideas, client):
+    fake_project_id = "647508c9a358e53a918ae3e7"
+    fake_ideas = [
+        {
+            "responses": ["response1", "response2"],
+        },
+    ]
+    mock_get_ideas.return_value = fake_ideas
+    response = client.get(f"/api/projects/{fake_project_id}/ideas")
+    assert response.status_code == 200
+    assert response.json() == fake_ideas
+
 def test_read_main():
     response = client.get("/")
     assert response.status_code == 200

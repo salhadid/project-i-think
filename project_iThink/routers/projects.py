@@ -145,3 +145,8 @@ def delete_idea(
         response.status_code = 404
     else:
         return collection
+
+
+@router.get("/api/projects/{project_id}/ideas")
+def get_ideas(project_id: str, repo: ProjectQueries = Depends()):
+    return repo.get_ideas(project_id)

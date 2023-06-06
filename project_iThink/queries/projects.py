@@ -52,3 +52,13 @@ class ProjectQueries(Queries):
 
     def get_project_by_id(self, id: str):
         return self.collection.find_one({"_id": ObjectId(id)})
+
+    def get_ideas(self, project_id: str):
+        collection = self.collection.find()
+        responses = []
+        for response in collection:
+            response_data = {
+                "response": response,
+            }
+            responses.append(response_data)
+        return responses
