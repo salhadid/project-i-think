@@ -874,6 +874,47 @@ npm install react @headlessui/react @heroicons/react/outline tailwindcss
 
 The `Faq` component uses CSS classes from the Tailwind CSS library, such as `bg-gray-900`, `max-w-4xl`, `mx-auto`, `flex`, `col`, `items-center`, `text-center`, `text-3xl`, `sm:text-5xl`, `text-green-400`, `font-bold`, `tracking-wider`, `mt-8`, `mb-4`, `relative`, `overflow-hidden`, `block`, `absolute`, `inset-0`, `bg-gray-800`, `border-t-2`, `border-b-2`, `text-gray-200`, `py-4`, `px-6`, `cursor-pointer`, `text-lg`, `md:text-xl`, `font-medium`, `w-6`, `h-6`, `animate-glitch`, `text-base`, `md:text-lg`, `rounded-lg`, `shadow-xl`, `transform`, `hover:scale-105`, `transition-all`, `duration-500`, and `mb-10`. You can customize the styling by modifying the CSS file or using inline styles.
 ----------
+# Footer Component
+
+The `Footer` component is a React functional component that renders the footer section of a web page. It includes a container with two divs: one that displays a text message and another that displays an image. The component uses CSS classes from the Tailwind CSS library to style the footer and make it responsive.
+
+## Props
+
+The `Footer` component does not take any props.
+
+## Usage
+
+To use the `Footer` component, import it into your React component and render it in your JSX:
+
+```jsx
+import Footer from './Footer';
+
+function MyComponent() {
+  return (
+    <div>
+      <Footer />
+    </div>
+  );
+}
+```
+
+## Dependencies
+
+The `Footer` component depends on the following packages:
+
+- `react`
+- `tailwindcss`
+
+Make sure to install them before using the component:
+
+```bash
+npm install react tailwindcss
+```
+
+## Styling
+
+The `Footer` component uses CSS classes from the Tailwind CSS library, such as `bg-gradient-to-r`, `from-purple-900`, `to-black`, `shadow`, `py-4`, `container`, `mx-auto`, `flex`, `justify-between`, `items-center`, `px-4`, `md:px-0`, `text-white`, `w-full`, `text-center`, `flex`, `justify-end`, `w-16`, `h-16`. You can customize the styling by modifying the CSS file or using inline styles.
+----------
 
 
 
