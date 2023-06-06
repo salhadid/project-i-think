@@ -7,7 +7,7 @@ import CookiePopup from "./CookiePopup";
 
 const HomeLoggedOut = () => {
     return (
-        <div className="min-h-screen bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white flex flex-col items-center justify-center space-y-16 pt-16">
+        <div className="min-h-screen bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white flex flex-col items-center justify-center space-y-16 pt-40">
         <CookiePopup />
         <div className="text-center space-y-6">
             <h1 className="text-6xl font-bold">Welcome to iThink</h1>
