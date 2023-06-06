@@ -787,6 +787,63 @@ npm install react react-toastify tailwindcss
 
 The `CreateProject` component uses CSS classes from the Tailwind CSS library, such as `bg-gradient-to-r`, `from-purple-400`, `via-pink-500`, `to-red-500`, `min-h-screen`, `flex`, `items-center`, `justify-center`, `max-w-md`, `bg-white`, `rounded-lg`, `shadow-lg`, `p-8`, `text-2xl`, `font-bold`, `mb-4`, `block`, `text-gray-700`, `border`, `rounded`, `w-full`, `py-2`, `px-3`, `leading-tight`, `focus:outline-none`, `focus:shadow-outline`, `flex`, `bg-blue-500`, `hover:bg-blue-700`, `text-white`, `font-bold`, `disabled:opacity-50`, `disabled:cursor-wait`, `mt-4`, `bg-green-100`, `border-l-4`, `border-green-500`, `text-green-700`, and `p-4`. You can customize the styling by modifying the CSS file or using inline styles.
 ----------
+# EditResponses Component
+
+The `EditResponses` component is a React functional component that allows the user to edit responses for a selected project. It uses the `useState` and `useEffect` hooks to manage the state of the component and includes functions to handle project selection, response addition, and response deletion. The component also uses `axios` to make HTTP requests to the backend API.
+
+## Props
+
+The `EditResponses` component does not take any props.
+
+## Usage
+
+To use the `EditResponses` component, import it into your React component and render it in your JSX:
+
+```jsx
+import EditResponses from './EditResponses';
+
+function MyComponent() {
+  return (
+    <div>
+      <EditResponses />
+    </div>
+  );
+}
+```
+
+## Dependencies
+
+The `EditResponses` component depends on the following packages:
+
+- `react`
+- `axios`
+- `tailwindcss`
+
+Make sure to install them before using the component:
+
+```bash
+npm install react axios tailwindcss
+```
+
+## Styling
+
+The `EditResponses` component uses CSS classes from the Tailwind CSS library, such as `bg-gradient-to-r`, `from-purple-900`, `via-violet-500`, `to-blue-300`, `flex`, `items-center`, `justify-center`, `bg-white`, `rounded-lg`, `shadow-lg`, `p-8`, `text-center`, `text-4xl`, `text-blue-600`, `font-bold`, `mb-8`, `font-sans`, `mb-6`, `font-medium`, `text-lg`, `text-sky-400`, `font-semibold`, `flex-col`, `gap-2`, `flex-grow`, `font-light`, `border`, `rounded-l`, `px-1`, `py-1`, `flex-1`, `ml-4`, and `mt-5`. You can customize the styling by modifying the CSS file or using inline styles.
+--------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
