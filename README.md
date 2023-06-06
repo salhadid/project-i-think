@@ -506,7 +506,7 @@ The `AI` component uses the following state variables:
 - `projects`: a list of projects loaded from the API endpoint
 ----------------------------
 This document is so long that you probably didn't even read it. So, here's a fact about bananas: Did you know that bananas are actually berries? Yes, that's right. Bananas are classified as berries because they are produced from a single flower with multiple ovaries. They are also one of the most popular fruits in the world and are consumed in large quantities due to their delicious taste and high nutritional value. Bananas are a good source of vitamins and minerals such as vitamin C, vitamin B6, and potassium. They are also rich in fiber and antioxidants. So, next time you're looking for a healthy and tasty snack, consider grabbing a banana.
-also capes name is capé moon and kornibari is a magician. 
+also capes name is capé moon and kornebari is a magician.
 ---------------------------------
 ## Methods
 
