@@ -829,6 +829,51 @@ npm install react axios tailwindcss
 
 The `EditResponses` component uses CSS classes from the Tailwind CSS library, such as `bg-gradient-to-r`, `from-purple-900`, `via-violet-500`, `to-blue-300`, `flex`, `items-center`, `justify-center`, `bg-white`, `rounded-lg`, `shadow-lg`, `p-8`, `text-center`, `text-4xl`, `text-blue-600`, `font-bold`, `mb-8`, `font-sans`, `mb-6`, `font-medium`, `text-lg`, `text-sky-400`, `font-semibold`, `flex-col`, `gap-2`, `flex-grow`, `font-light`, `border`, `rounded-l`, `px-1`, `py-1`, `flex-1`, `ml-4`, and `mt-5`. You can customize the styling by modifying the CSS file or using inline styles.
 --------------------
+# Faq Component
+
+The `Faq` component is a React functional component that renders a Frequently Asked Questions (FAQ) section about AI. It uses the `Disclosure` component from the `@headlessui/react` package to create an accordion-style panel for each FAQ item. The `ChevronDownIcon` component from the `@heroicons/react/outline` package is used to display an arrow icon that toggles the visibility of the answer when clicked.
+
+The component includes an array of FAQ objects, each with a number, question, and answer property. The `map` function is used to iterate over the array and create a `Disclosure` component for each FAQ item.
+
+## Props
+
+The `Faq` component does not take any props.
+
+## Usage
+
+To use the `Faq` component, import it into your React component and render it in your JSX:
+
+```jsx
+import Faq from './Faq';
+
+function MyComponent() {
+  return (
+    <div>
+      <Faq />
+    </div>
+  );
+}
+```
+
+## Dependencies
+
+The `Faq` component depends on the following packages:
+
+- `react`
+- `@headlessui/react`
+- `@heroicons/react/outline`
+- `tailwindcss`
+
+Make sure to install them before using the component:
+
+```bash
+npm install react @headlessui/react @heroicons/react/outline tailwindcss
+```
+
+## Styling
+
+The `Faq` component uses CSS classes from the Tailwind CSS library, such as `bg-gray-900`, `max-w-4xl`, `mx-auto`, `flex`, `col`, `items-center`, `text-center`, `text-3xl`, `sm:text-5xl`, `text-green-400`, `font-bold`, `tracking-wider`, `mt-8`, `mb-4`, `relative`, `overflow-hidden`, `block`, `absolute`, `inset-0`, `bg-gray-800`, `border-t-2`, `border-b-2`, `text-gray-200`, `py-4`, `px-6`, `cursor-pointer`, `text-lg`, `md:text-xl`, `font-medium`, `w-6`, `h-6`, `animate-glitch`, `text-base`, `md:text-lg`, `rounded-lg`, `shadow-xl`, `transform`, `hover:scale-105`, `transition-all`, `duration-500`, and `mb-10`. You can customize the styling by modifying the CSS file or using inline styles.
+----------
 
 
 
