@@ -47,3 +47,5 @@ Next, I embedded a Google map in the Map Container section of the component to h
 Finally, I added a Meet the Devs section to the component to showcase our team members. Each team member's photo and name were displayed in a circular container, along with a link to their LinkedIn profile.
 
 Overall, I'm happy with how the ContactUs component turned out. It provides users with a clear and visually appealing way to contact us and learn more about our team.
+
+Have been documenting everything in readme for styling, dependencies and everything needed for each component so for details please refer to readme.
