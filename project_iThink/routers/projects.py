@@ -39,13 +39,17 @@ async def create_project(
 
     project = project_queries.create_project(info)
 
-    manager_role = RoleIn(user_id=manager_id, project_id=project.id, role="manager")
+    manager_role = RoleIn(
+        user_id=manager_id, project_id=project.id, role="manager"
+    )
     role_queries.create_role(manager_role)
 
     return project
 
 
-@router.delete("/api/projects/{project_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete(
+    "/api/projects/{project_id}", status_code=status.HTTP_204_NO_CONTENT
+)
 async def delete_project(
     project_id: str,
     project_queries: ProjectQueries = Depends(),
@@ -107,7 +111,9 @@ async def add_response_to_project(
                 detail="User authentication required",
             )
 
-        project = project_queries.collection.find_one({"_id": ObjectId(project_id)})
+        project = project_queries.collection.find_one(
+            {"_id": ObjectId(project_id)}
+        )
 
         if not project:
             raise HTTPException(
@@ -118,8 +124,10 @@ async def add_response_to_project(
         if "responses" not in project:
             project["responses"] = []
 
-        project['responses'].append(response)
-        project_queries.collection.update_one({"_id": ObjectId(project_id)}, {"$set": project})
+        project["responses"].append(response)
+        project_queries.collection.update_one(
+            {"_id": ObjectId(project_id)}, {"$set": project}
+        )
 
         return {"message": response}
     except Exception as e:
@@ -127,18 +135,19 @@ async def add_response_to_project(
         raise HTTPException(status_code=500, detail="Internal server error!")
 
 
-@router.get("/api/projects/{id}/")
+@router.get("/api/projects/{id}")
 async def get_project_by_id(id: str, repo: ProjectQueries = Depends()):
     project = repo.get_project_by_id(id)
     project["id"] = str(project["_id"])
     return ProjectOut(**project)
 
 
-@router.put("/api/projects/{project_id}/remove_idea/{idea_index}", response_model=ProjectOut)
+@router.put(
+    "/api/projects/{project_id}/remove_idea/{idea_index}",
+    response_model=ProjectOut,
+)
 def delete_idea(
-    project_id: str,
-    response: str,
-    repo: ProjectQueries = Depends()
+    project_id: str, response: str, repo: ProjectQueries = Depends()
 ):
     collection = repo.remove_idea(project_id, response)
     if collection is None:
