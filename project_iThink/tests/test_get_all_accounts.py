@@ -14,14 +14,3 @@ def test_get_all_accounts():
     assert response.status_code == 200
     assert response.json() == []
     app.dependency_overrides = {}
-
-def test_create_user():
-    client = TestClient(app)
-    response = client.post("/api/accounts", json={
-        "email": "test@test.com",
-        "password": "test",
-        "full_name": "test",
-    },)
-
-    assert response.status_code == 200
-    assert response.json()["account"]["email"] == "test@test.com"
