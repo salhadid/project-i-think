@@ -1,4 +1,4 @@
-export default [
+const data = [
     {
         type: "rectangle",
         version: 173,
@@ -503,3 +503,5 @@ export default [
         groupIds: [],
     },
 ];
+
+export default data;

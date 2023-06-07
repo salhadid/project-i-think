@@ -43,6 +43,7 @@ const SocialShare = () => {
                     <a
                         href="https://www.galvanize.com/"
                         target="_blank"
+                        rel="noreferrer"
                         className="row-span-1 group w-16 h-16 inline-flex justify-center items-center border-2 border-t border-b border-gray-100 bg-white hover:bg-gray-50"
                     >
                         <svg
@@ -59,6 +60,7 @@ const SocialShare = () => {
                     <a
                         href="https://www.galvanize.com/"
                         target="_blank"
+                        rel="noreferrer"
                         className="row-span-1 group w-16 h-16 inline-flex justify-center items-center border-2 border-t border-b border-gray-100 bg-white hover:bg-gray-50"
                     >
                         <svg
@@ -75,6 +77,7 @@ const SocialShare = () => {
                     <a
                         href="https://www.galvanize.com/"
                         target="_blank"
+                        rel="noreferrer"
                         className="row-span-1 group w-16 h-16 inline-flex justify-center items-center border-2 border-t border-b border-gray-100 bg-white hover:bg-gray-50"
                     >
                         <svg

@@ -5,7 +5,6 @@ import LoginForm from "./LoginForm.js";
 import AddUserForm from "./AddUserForm.js";
 import AI from "./AI";
 import NavBar from "./NavBar";
-import WeatherWidget from "./WeatherWidget";
 import UpdateUser from "./UpdateUser";
 import HomeLoggedIn from "./HomeLoggedIn";
 import HomeLoggedOut from "./HomeLoggedOut";
@@ -36,7 +35,6 @@ function App() {
                     <Route path="/login" element={<LoginForm />} />
                     <Route path="/register" element={<AddUserForm />} />
                     <Route path="/ai" element={<AI />} />
-                    <Route path="/WeatherWidget" element={<WeatherWidget />} />
                     <Route path="/update" element={<UpdateUser />} />
                     <Route path="/create/project" element={<CreateProject />} />
                     <Route path="/projectForm" element={<ProjectForm />} />
