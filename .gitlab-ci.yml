@@ -28,9 +28,9 @@ front-end-build-job:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   stage: build
   image: node:lts-bullseye
-  needs:
-    - project-iThink-unit-tests
-    - lint-test
+  # needs:
+  #   - project-iThink-unit-tests
+  #   - lint-test
   script:
     - cd ghi
     - npm install
