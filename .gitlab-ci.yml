@@ -35,7 +35,7 @@ front-end-build-job:
         - npm run build
     artifacts:
         paths:
-            - ghi/build/
+        - ghi/build/
     variables:
         PUBLIC_URL: https://trawson.gitlab.io/project-i-think
         REACT_APP_iThink: feb-23-et-1-ithink.mod3projects.com
@@ -51,7 +51,8 @@ pages:
     script:
         - mv ghi/build public
     artifacts:
-        - paths: public
+        paths:
+			- public
 
 build-ithink-image:
     stage: build
