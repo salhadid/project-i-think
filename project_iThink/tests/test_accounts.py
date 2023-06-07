@@ -25,7 +25,3 @@ def test_get_all_users(mock_get_all_users, client):
 
 if __name__ == "__main__":
     pytest.main()
-
-    def get_all_users(self):
-        results = self.collection.find()
-        return list(results)
