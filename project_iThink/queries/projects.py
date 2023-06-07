@@ -21,8 +21,10 @@ class ProjectQueries(Queries):
 
     def create_project(self, info: ProjectIn) -> ProjectOut:
         props = info.dict()
-        if 'responses' not in props:
-            props['responses'] = []   # ensure 'responses' is initialized as an empty list
+        if "responses" not in props:
+            props[
+                "responses"
+            ] = []  # ensure 'responses' is initialized as an empty list
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])
         return ProjectOut(**props)
@@ -40,15 +42,15 @@ class ProjectQueries(Queries):
         self.collection.delete_one({"_id": ObjectId(project_id)})
 
     def remove_idea(self, id: str, response: str):
-            collection = self.collection.find_one({"_id":ObjectId(id)})
-            ideas = collection["responses"]
-            ideas.pop(ideas.index(response))
-            self.collection.find_one_and_update(
-                {"_id": ObjectId(id)},
-                {"$set": collection},
-                return_document=ReturnDocument.AFTER,
-            )
-            return ProjectOut(**collection, id=id)
+        collection = self.collection.find_one({"_id": ObjectId(id)})
+        ideas = collection["responses"]
+        ideas.pop(ideas.index(response))
+        self.collection.find_one_and_update(
+            {"_id": ObjectId(id)},
+            {"$set": collection},
+            return_document=ReturnDocument.AFTER,
+        )
+        return ProjectOut(**collection, id=id)
 
     def get_project_by_id(self, id: str):
         return self.collection.find_one({"_id": ObjectId(id)})

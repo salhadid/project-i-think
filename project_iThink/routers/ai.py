@@ -1,4 +1,4 @@
-from fastapi import (APIRouter, Depends)
+from fastapi import APIRouter, Depends
 import openai
 import os
 import json
@@ -28,7 +28,10 @@ def chatbot(message: Message):
     )
     answer = response.choices[0].text.strip()
     response_data = {"type": "ai", "answer": answer, "response": response}
-    print("AI-generated response JSON:", json.dumps(response_data, indent=2, default=str))
+    print(
+        "AI-generated response JSON:",
+        json.dumps(response_data, indent=2, default=str),
+    )
 
     return {"answer": answer}
 
@@ -48,6 +51,9 @@ def chatbot_submit(message: Message, repo: AiQueries = Depends()):
     answer = response.choices[0].text.strip()
     response_data = {"type": "ai", "answer": answer, "response": response}
     idea = repo.add_idea(Message(message=answer))
-    print("AI-generated response JSON:", json.dumps(response_data, indent=2, default=str))
+    print(
+        "AI-generated response JSON:",
+        json.dumps(response_data, indent=2, default=str),
+    )
 
     return {"answer": idea}

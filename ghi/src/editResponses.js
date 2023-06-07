@@ -11,7 +11,7 @@ function EditResponses() {
         const fetchProjects = async () => {
             try {
                 const result = await axios.get(
-                    "http://localhost:8000/api/projects/list/"
+                    `${process.env.REACT_APP_iThink}/api/projects/list`
                 );
                 setProjects(result.data);
             } catch (error) {
@@ -26,7 +26,7 @@ function EditResponses() {
             if (selectedProject) {
                 try {
                     const result = await axios.get(
-                        `http://localhost:8000/api/projects/${selectedProject.id}/`
+                        `${process.env.REACT_APP_iThink}/api/projects/${selectedProject.id}`
                     );
                     setResponses(result.data.responses);
                 } catch (error) {
@@ -51,7 +51,7 @@ function EditResponses() {
 
         try {
             const response = await axios.post(
-                `http://localhost:8000/api/projects/${selectedProject.id}/add_response`,
+                `${process.env.REACT_APP_iThink}/api/projects/${selectedProject.id}/add_response`,
                 newResponse,
                 {
                     headers: {
@@ -85,7 +85,7 @@ function EditResponses() {
     const handleDelete = async (response) => {
         try {
             await axios.put(
-                `http://localhost:8000/api/projects/${
+                `${process.env.REACT_APP_iThink}/api/projects${
                     selectedProject.id
                 }/remove_idea/${response}?response=${encodeURIComponent(
                     response

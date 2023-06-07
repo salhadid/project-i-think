@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Excalidraw } from "@excalidraw/excalidraw";
 import InitialData from "./initialData";
-
-// import "excalidraw/dist/excalidraw.min.css";
 import "./styles.css";
 
 const VisionBoard = () => {

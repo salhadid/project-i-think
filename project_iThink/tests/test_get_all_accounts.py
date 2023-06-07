@@ -5,9 +5,11 @@ from queries.projects import ProjectQueries
 
 client = TestClient(app=app)
 
-class AccountQueriesMock():
+
+class AccountQueriesMock:
     def get_all_accounts(self):
         return []
+
 
 def test_get_all_accounts():
     app.dependency_overrides[AccountQueries] = AccountQueriesMock
@@ -17,9 +19,10 @@ def test_get_all_accounts():
     app.dependency_overrides = {}
 
 
-class ProjectQueriesMock():
+class ProjectQueriesMock:
     def get_all_projects(self):
         return []
+
 
 def test_get_all_projects():
     app.dependency_overrides[ProjectQueries] = ProjectQueriesMock

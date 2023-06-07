@@ -64,7 +64,7 @@ async def delete_project(
     project_queries.delete_project(project_id)
 
 
-@router.get("/api/projects/list/", response_model=list[ProjectOut])
+@router.get("/api/projects/list", response_model=list[ProjectOut])
 async def get_all_projects(repo: ProjectQueries = Depends()):
     return repo.get_all_projects()
 

@@ -50,10 +50,6 @@ const AddUserForm = () => {
         setShowPassword(!showPassword);
     };
 
-    const handleCaptchaChange = () => {
-        setIsRobot(Math.random() < 0.5);
-    };
-
     return (
         <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">
             <ToastContainer />

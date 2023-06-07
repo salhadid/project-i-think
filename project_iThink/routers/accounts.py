@@ -55,7 +55,7 @@ async def create_account(
     return AccountToken(account=account, **token.dict())
 
 
-@router.get("/api/accounts/", response_model=list[AccountOut])
+@router.get("/api/accounts", response_model=list[AccountOut])
 async def get_all_accounts(repo: AccountQueries = Depends()):
     return repo.get_all_accounts()
 

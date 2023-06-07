@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { ClipLoader } from "react-spinners";
 
 const AIChat = () => {
     const [loading, setLoading] = useState(false);

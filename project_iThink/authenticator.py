@@ -4,7 +4,6 @@ from jwtdown_fastapi.authentication import Authenticator
 from queries.accounts import (
     AccountQueries,
     AccountOut,
-    AccountIn
 )
 
 

@@ -10,7 +10,6 @@ class DuplicateAccountError(ValueError):
 
 
 class AccountIn(BaseModel):
-    # username: Optional(str)
     email: str
     password: str
     full_name: str
@@ -46,7 +45,9 @@ class AccountQueries(Queries):
         props["id"] = str(props["_id"])
         return AccountOut(**props)
 
-    def update_user(self, email: str, data: AccountPatch, hashed_password: str) -> AccountOut:
+    def update_user(
+        self, email: str, data: AccountPatch, hashed_password: str
+    ) -> AccountOut:
         updated_user = self.collection.find_one({"email": email})
         if updated_user is None:
             raise ValueError(f"No account found with email {email}")

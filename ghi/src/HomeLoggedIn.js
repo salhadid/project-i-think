@@ -11,7 +11,7 @@ function HomeLoggedIn() {
     useEffect(() => {
         // Fetch user data
         axios
-            .get(`http://localhost:8000/api/accounts/details`, {
+            .get(`${process.env.REACT_APP_iThink}/api/accounts/details`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
@@ -26,7 +26,7 @@ function HomeLoggedIn() {
 
         // Fetch projects
         axios
-            .get(`http://localhost:8000/api/projects/list/`, {
+            .get(`${process.env.REACT_APP_iThink}/api/projects/list`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
@@ -41,7 +41,7 @@ function HomeLoggedIn() {
 
         // Fetch images
         axios
-            .get(`http://localhost:8000/api/images/list/`, {
+            .get(`${process.env.REACT_APP_iThink}/api/images/list`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
@@ -66,11 +66,16 @@ function HomeLoggedIn() {
 
     const handleDeleteProject = (projectId) => {
         axios
-            .delete(`http://localhost:8000/api/projects/${projectId}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            })
+            .delete(
+                `${process.env.REACT_APP_iThink}api/projects/${projectId}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem(
+                            "token"
+                        )}`,
+                    },
+                }
+            )
             .then((response) => {
                 alert(`Project deleted successfully`);
                 setProjects((prevProjects) =>
@@ -152,7 +157,7 @@ function HomeLoggedIn() {
                                                 className="mb-2 flex items-center justify-between"
                                             >
                                                 <a
-                                                    href={`http://localhost:8000/projects/list/${project.id}/`}
+                                                    href={`${process.env.REACT_APP_iThink}/projects/list/${project.id}`}
                                                     className="text-blue-500 hover:underline"
                                                 >
                                                     {project.title}{" "}
@@ -183,7 +188,7 @@ function HomeLoggedIn() {
                         {images.length > 0 ? (
                             <div className="flex justify-center items-center">
                                 <img
-                                    src={`http://localhost:8000/api/images/${images[currentImageIndex].filename}`}
+                                    src={`${process.env.REACT_APP_iThink}/api/images/${images[currentImageIndex].filename}`}
                                     alt={images[currentImageIndex].filename}
                                 />
                             </div>
