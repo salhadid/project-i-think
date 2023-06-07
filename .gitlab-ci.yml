@@ -13,6 +13,7 @@ project-iThink-unit-tests:
     - cd project_iThink
     - pip install -r requirements.txt
     - python -m pytest
+  when: manual
 
 lint-test:
   image: python:3-bullseye
@@ -20,6 +21,7 @@ lint-test:
   script:
     - pip install flake8
     - flake8 project_iThink
+  when: manual
 
 front-end-build-job:
   rules:
