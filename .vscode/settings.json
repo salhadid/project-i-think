@@ -1,13 +1,14 @@
 {
-  "editor.formatOnPaste": true,
-  "python.formatting.provider": "none",
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
-  },
-  "cSpell.words": ["thinkbot", "Toastify"],
-  "eslint.format.enable": true,
-  "eslint.notebooks.rules.customizations": [],
-  "prettier.tabWidth": 4
+    "editor.formatOnPaste": true,
+    "python.formatting.provider": "none",
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "cSpell.words": ["thinkbot", "Toastify"],
+    "eslint.format.enable": true,
+    "eslint.notebooks.rules.customizations": [],
+    "prettier.tabWidth": 4,
+    "prettier.enable": true
 }
