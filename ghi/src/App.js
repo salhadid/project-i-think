@@ -20,7 +20,6 @@ import Contact1 from "./contact";
 import Pricing from "./pricing";
 import Faq from "./faq";
 
-
 function App() {
     const [loggedIn, setLoggedIn] = useState(false);
 
@@ -28,9 +27,10 @@ function App() {
         const token = localStorage.getItem("token");
         setLoggedIn(token !== null);
     }, []);
-
+    const domain = /https:\/\/[^/]+/;
+    const basename = process.env.PUBLIC_URL.replace(domain, "/iThink");
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={basename}>
             <NavBar />
             <div>
                 <Routes>

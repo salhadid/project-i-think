@@ -18,17 +18,20 @@ function CreateProject() {
     const projectDescription = description; // store the description
 
     const token = localStorage.getItem("token"); // Retrieve the JWT token from local storage
-    const response = await fetch("http://localhost:8000/api/projects", {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // Add the JWT token to the headers
-        },
-        body: JSON.stringify({
-        title,
-        description,
-        }),
-    });
+    const response = await fetch(
+        `${process.env.REACT_APP_iThink}/api/projects`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`, // Add the JWT token to the headers
+            },
+            body: JSON.stringify({
+                title,
+                description,
+            }),
+        }
+    );
 
     const project = await response.json();
 

@@ -31,7 +31,7 @@ services:
       NODE_ENV: development
       HOST: "0.0.0.0"
       PUBLIC_URL: http://localhost:3000
-      REACT_APP_SAMPLE_SERVICE_API_HOST: ${REACT_APP_SAMPLE_SERVICE_API_HOST}
+      REACT_APP_iThink: ${REACT_APP_iThink}
   mongo:
     image: mongo:4
     volumes:

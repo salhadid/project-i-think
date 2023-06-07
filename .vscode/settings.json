@@ -6,5 +6,8 @@
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
-  "cSpell.words": ["thinkbot", "Toastify"]
+  "cSpell.words": ["thinkbot", "Toastify"],
+  "eslint.format.enable": true,
+  "eslint.notebooks.rules.customizations": [],
+  "prettier.tabWidth": 4
 }

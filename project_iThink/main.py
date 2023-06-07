@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import accounts, ai, projects, image
@@ -10,6 +11,7 @@ origins = [
     "http://localhost:8000",
     "http://localhost:3000",
     "http://localhost:27017",
+    os.environ.get("CORS_HOST", None),
 ]
 
 app.include_router(authenticator.router)
@@ -26,8 +28,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.middleware("http")
 async def add_cors_header(request, call_next):
     response = await call_next(request)
     response.headers["Access-Control-Allow-Origin"] = "*"
     return response
+
+
+@app.get("/")
+async def health_check():
+    return {"Health Check": "Positive"}
