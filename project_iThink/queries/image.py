@@ -25,7 +25,11 @@ class ImageQueries(Queries):
 
     def get_all_images(self):
         files = self.gridfs.find()
-        return [{"filename": file.filename, "_id": str(file._id)} for file in files if self.gridfs.exists(file._id)]
+        return [
+            {"filename": file.filename, "_id": str(file._id)}
+            for file in files
+            if self.gridfs.exists(file._id)
+        ]
 
     async def delete_image(self, image_id: str):
         try:

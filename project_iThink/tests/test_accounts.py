@@ -1,8 +1,6 @@
 import pytest
-from fastapi import UploadFile
 from fastapi.testclient import TestClient
 from unittest.mock import patch
-from queries.image import ImageQueries
 from main import app
 
 
