@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import heroImage from "./static/hero-ithink.png";
+import { useNavigate } from "react-router-dom";
 
 function HomeLoggedIn() {
     const [user, setUser] = useState({});
     const [projects, setProjects] = useState([]);
     const [images, setImages] = useState([]);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Fetch user data
@@ -119,8 +121,7 @@ function HomeLoggedIn() {
                                     type="button"
                                     className="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700 transition ease-in-out duration-150 ml-4"
                                     onClick={() => {
-                                        window.location.href =
-                                            "http://localhost:3000/create/project";
+                                        navigate("/create/project");
                                     }}
                                 >
                                     Add a new project ➕
@@ -129,8 +130,7 @@ function HomeLoggedIn() {
                                     type="button"
                                     className="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:border-green-700 focus:shadow-outline-green active:bg-green-700 transition ease-in-out duration-150 ml-4"
                                     onClick={() => {
-                                        window.location.href =
-                                            "http://localhost:3000/editResponses";
+                                        navigate("/editResponses");
                                     }}
                                 >
                                     Edit Responses 📝

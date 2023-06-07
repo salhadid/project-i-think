@@ -11,7 +11,6 @@ import HomeLoggedIn from "./HomeLoggedIn";
 import HomeLoggedOut from "./HomeLoggedOut";
 import Footer from "./Footer";
 import CreateProject from "./CreateProject";
-import Voting from "./Voting";
 import ProjectForm from "./ProjectForm";
 import VisionBoard from "./VisionBoard";
 import ImageList from "./ImageList";
@@ -40,7 +39,6 @@ function App() {
                     <Route path="/WeatherWidget" element={<WeatherWidget />} />
                     <Route path="/update" element={<UpdateUser />} />
                     <Route path="/create/project" element={<CreateProject />} />
-                    <Route path="/voting" element={<Voting />} />
                     <Route path="/projectForm" element={<ProjectForm />} />
                     <Route path="/VisionBoard" element={<VisionBoard />} />
                     <Route path="/ImageList" element={<ImageList />} />
