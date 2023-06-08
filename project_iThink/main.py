@@ -7,10 +7,10 @@ from authenticator import authenticator
 app = FastAPI()
 
 origins = [
-    # "https://localhost",
-    # "https://localhost:8000",
+    # "http://localhost",
+    # "http://localhost:8000",
     # "https://localhost:3000",
-    # "https://localhost:27017",
+    # "http://localhost:27017",
     "https://trawson.gitlab.io",
     os.environ.get("CORS_HOST", None),
     os.environ.get("REACT_APP_iThink", None),
@@ -32,7 +32,7 @@ app.add_middleware(
 )
 
 
-@app.middleware("http")
+@app.middleware("https")
 async def add_cors_header(request, call_next):
     response = await call_next(request)
     response.headers["Access-Control-Allow-Origin"] = "*"
