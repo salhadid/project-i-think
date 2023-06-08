@@ -34,7 +34,11 @@ const AddUserForm = () => {
             resetForm();
             toast.success(`Congratulations, account was successfully created!`);
         } catch (error) {
-            console.log(error.response.data);
+            if (error.response && error.response.data) {
+                console.log(error.response.data);
+            } else {
+                console.log(error);
+            }
         }
     };
 
