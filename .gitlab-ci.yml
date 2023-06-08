@@ -22,8 +22,7 @@ lint-test:
   script:
     - pip install flake8
     - flake8 project_iThink
-  when: manual
-
+    
 front-end-build-job:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
