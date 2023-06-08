@@ -32,6 +32,13 @@ app.add_middleware(
 )
 
 
+@app.middleware("https")
+async def add_cors_header(request, call_next):
+    response = await call_next(request)
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    return response
+
+
 @app.get("/")
 async def health_check():
     return {"Health Check": "Positive"}
