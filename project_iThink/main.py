@@ -9,7 +9,7 @@ app = FastAPI()
 origins = [
     # "https://localhost",
     # "https://localhost:8000",
-    "http://localhost:3000",
+    # "https://localhost:3000",
     # "https://localhost:27017",
     os.environ.get("CORS_HOST", None),
     os.environ.get("REACT_APP_iThink", None),
