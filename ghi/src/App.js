@@ -26,7 +26,7 @@ function App() {
         setLoggedIn(token !== null);
     }, []);
     const domain = /https:\/\/[^/]+/;
-    const basename = process.env.PUBLIC_URL.replace(domain, "/iThink");
+    const basename = process.env.PUBLIC_URL.replace(domain, "");
     return (
         <BrowserRouter basename={basename}>
             <NavBar />

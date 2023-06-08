@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 const AIChat = () => {
-    const [setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [messages, setMessages] = useState([
         {
             message: "Hiya! Let's come up with some ideas together!",
