@@ -75,7 +75,7 @@ deploy-ithink-image:
   image: registry.gitlab.com/galvanize-inc/foss/glv-cloud-cli:latest
   script:
     - glv-cloud-cli reset -a ithink -t ${CIRRUS_TOKEN}
-    - glv-cloud-cli deploy -a ithink -i registry.gitlab.com/trawson/project-i-think/ithink_image:latest -e SIGNING_KEY=1a68e2e1-ff49-487b-a415-8b441485c74c -e MONGO_URL=feb-23-et-1-mongo-database-service.default.svc.cluster.local -e CORS_HOST=https://trawson.gitlab.io -e OPENAI_API_KEY=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
+    - glv-cloud-cli deploy -a ithink -i registry.gitlab.com/trawson/project-i-think/ithink_image:latest -e SIGNING_KEY=1a68e2e1-ff49-487b-a415-8b441485c74c -e MONGO_URL=feb-23-et-1-mongo-database-service.default.svc.cluster.local -e CORS_HOST=https://trawson.gitlab.io
 
   only:
     - main
