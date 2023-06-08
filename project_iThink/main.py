@@ -24,12 +24,12 @@ app.include_router(image.router)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+#allow_origins=origins,
 
 @app.middleware("http")
 async def add_cors_header(request, call_next):
