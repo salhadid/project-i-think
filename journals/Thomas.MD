@@ -3,6 +3,7 @@
 -   Removed all hard-coded localhost:8000 in prep for deployment (did in tandem with everyone).
 -   Started writing some more unit tests. These are fun.
 -   Wrote out gitlab-cy.yaml in prep for deployment (did in tandem with everyone).
+-   Spent the rest of the day trying to get deployment to work.
 
 ## June 6th, 2023
 
