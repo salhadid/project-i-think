@@ -29,7 +29,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-#allow_origins=origins,
+
 
 @app.middleware("http")
 async def add_cors_header(request, call_next):
