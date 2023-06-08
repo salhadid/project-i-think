@@ -2,6 +2,7 @@
 
 -   Got deployment to work. Working on axios errors.
 -   Demo'd project to Candice.
+-   Updated REACT_APP variable on gitlab
 
 ## June 7th, 2023
 
