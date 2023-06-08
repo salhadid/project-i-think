@@ -1433,5 +1433,5 @@ npm install react axios react-toastify tailwindcss
 ## Styling
 
 The `UpdateUser` component uses CSS classes from the Tailwind CSS library, such as `bg-gradient-to-br`, `from-blue-500`, `to-purple-500`, `min-h-screen`, `flex`, `items-center`, `justify-center`, `bg-white`, `rounded-lg`, `shadow-lg`, `p-8`, `max-w-md`, `mx-auto`, `mb-4`, `block`, `font-bold`, `text-gray-700`, `w-full`, `px-3`, `py-2`, `border`, `rounded-lg`, `shadow-sm`, `focus:outline-none`, `focus:shadow-outline-blue`, `focus:border-blue-300`, `relative`, `absolute`, `top-0`, `right-0`, `m-2`, `text-gray-500`, `hover:text-gray-700`, `text-blue-500`, `hover:bg-blue-700`, `text-white`, `font-bold`, `py-2`, `px-4`, `focus:outline-none`, `focus:shadow-outline-blue`, and `active:bg-blue-800`.
-:)
+:) pipeline
 ----------
