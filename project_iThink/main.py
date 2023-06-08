@@ -11,6 +11,7 @@ origins = [
     # "https://localhost:8000",
     # "https://localhost:3000",
     # "https://localhost:27017",
+    "https://trawson.gitlab.io",
     os.environ.get("CORS_HOST", None),
     os.environ.get("REACT_APP_iThink", None),
     os.environ.get("PUBLIC_URL", None),
