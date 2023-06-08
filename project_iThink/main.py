@@ -7,11 +7,13 @@ from authenticator import authenticator
 app = FastAPI()
 
 origins = [
-    "http://localhost",
-    "http://localhost:8000",
+    # "http://localhost",
+    # "http://localhost:8000",
     "http://localhost:3000",
-    "http://localhost:27017",
+    # "http://localhost:27017",
     os.environ.get("CORS_HOST", None),
+    os.environ.get("REACT_APP_iThink", None),
+    os.environ.get("PUBLIC_URL", None),
 ]
 
 app.include_router(authenticator.router)
