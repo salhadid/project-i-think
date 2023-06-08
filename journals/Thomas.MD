@@ -1,3 +1,8 @@
+## June 8th, 2023
+
+-   Got deployment to work. Working on axios errors.
+-   Demo'd project to Candice.
+
 ## June 7th, 2023
 
 -   Removed all hard-coded localhost:8000 in prep for deployment (did in tandem with everyone).
