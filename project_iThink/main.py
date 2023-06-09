@@ -9,9 +9,9 @@ app = FastAPI()
 origins = [
     # "http://localhost",
     # "http://localhost:8000",
-    # "https://localhost:3000",
+    "http://localhost:3000",
     # "http://localhost:27017",
-    "https://trawson.gitlab.io",
+    # "http://trawson.gitlab.io",
     os.environ.get("CORS_HOST"),
     os.environ.get("REACT_APP_iThink"),
     os.environ.get("PUBLIC_URL"),
@@ -31,6 +31,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.middleware("http")
+async def add_cors_header(request, call_next):
+    response = await call_next(request)
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    return response
 
 @app.get("/")
 async def health_check():
