@@ -85,7 +85,7 @@ function EditResponses() {
     const handleDelete = async (response) => {
         try {
             await axios.put(
-                `${process.env.REACT_APP_iThink}/api/projects${
+                `${process.env.REACT_APP_iThink}/api/projects/${
                     selectedProject.id
                 }/remove_idea/${response}?response=${encodeURIComponent(
                     response
