@@ -5,6 +5,7 @@ from fastapi import (
     APIRouter,
     Body,
 )
+from project_iThink.routers.accounts import get_current_user_info
 from queries.projects import (
     ProjectIn,
     ProjectOut,
@@ -162,7 +163,11 @@ def get_ideas(project_id: str, repo: ProjectQueries = Depends()):
 
 
 @router.get("/projects/user/{user_id}", response_model=list[ProjectOut])
-def get_projects_for_user(user_id: str, project_queries: ProjectQueries = Depends(), current_user = Depends(get_current_user)):
+def get_projects_for_user(
+    user_id: str,
+    project_queries: ProjectQueries = Depends(),
+    current_user=Depends(get_current_user_info)
+):
     if current_user is None:
         return "Unauthorized"
 
