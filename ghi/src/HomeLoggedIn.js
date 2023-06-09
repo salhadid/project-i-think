@@ -156,13 +156,18 @@ function HomeLoggedIn() {
                                                 key={project.id}
                                                 className="mb-2 flex items-center justify-between"
                                             >
-                                                <a
-                                                    href={`${process.env.REACT_APP_iThink}/projects/list/${project.id}`}
+                                                <button
+                                                    type="button"
                                                     className="text-blue-500 hover:underline"
+                                                    onClick={() => {
+                                                        navigate(
+                                                            "/editResponses"
+                                                        );
+                                                    }}
                                                 >
                                                     {project.title}{" "}
                                                     {/* Update the property name to 'title' */}
-                                                </a>
+                                                </button>
                                                 <button
                                                     type="button"
                                                     className="text-red-500 hover:text-red-700"
