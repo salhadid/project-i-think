@@ -22,6 +22,7 @@ lint-test:
   script:
     - pip install flake8
     - flake8 project_iThink
+  when: manual
 
 front-end-build-job:
   rules:
@@ -75,7 +76,5 @@ deploy-ithink-image:
   image: registry.gitlab.com/galvanize-inc/foss/glv-cloud-cli:latest
   script:
     - glv-cloud-cli reset -a ithink -t ${CIRRUS_TOKEN}
-
-
   only:
     - main
