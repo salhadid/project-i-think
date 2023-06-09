@@ -10,8 +10,8 @@ function HomeLoggedIn() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const navigate = useNavigate();
 
-    // Fetch user data
     useEffect(() => {
+        // Fetch user data
         axios
             .get(`${process.env.REACT_APP_iThink}/api/accounts/details`, {
                 headers: {
@@ -25,27 +25,21 @@ function HomeLoggedIn() {
             .catch((error) => {
                 alert(`Error fetching user data: ${error}`);
             });
-    }, []);
 
-    // Fetch projects
-    useEffect(() => {
-        if(user.id) {
-            axios
-                .get(`${process.env.REACT_APP_iThink}/api/projects/list`, {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("token")}`,
-                    },
-                })
-                .then((response) => {
-                    const projectData = response.data;
-                    const myProjects = projectData.filter(project => project.managerId === user.id || project.assignedUsers.includes(user.id));
-                    setProjects(myProjects);
-                })
-                .catch((error) => {
-                    alert(`Error fetching projects: ${error}`);
-                });
-        }
-    }, [user.id]);
+        // Fetch projects
+        axios
+            .get(`${process.env.REACT_APP_iThink}/api/projects/list`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            })
+            .then((response) => {
+                const projectData = response.data;
+                setProjects(projectData); // Assuming the response is an array of objects
+            })
+            .catch((error) => {
+                alert(`Error fetching projects: ${error}`);
+            });
 
         // Fetch images
         axios
@@ -75,7 +69,7 @@ function HomeLoggedIn() {
     const handleDeleteProject = (projectId) => {
         axios
             .delete(
-                `${process.env.REACT_APP_iThink}api/projects/${projectId}`,
+                `${process.env.REACT_APP_iThink}/api/projects/${projectId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem(
@@ -162,18 +156,13 @@ function HomeLoggedIn() {
                                                 key={project.id}
                                                 className="mb-2 flex items-center justify-between"
                                             >
-                                                <button
-                                                    type="button"
+                                                <a
+                                                    href={`${process.env.REACT_APP_iThink}/projects/list/${project.id}`}
                                                     className="text-blue-500 hover:underline"
-                                                    onClick={() => {
-                                                        navigate(
-                                                            "/editResponses"
-                                                        );
-                                                    }}
                                                 >
                                                     {project.title}{" "}
                                                     {/* Update the property name to 'title' */}
-                                                </button>
+                                                </a>
                                                 <button
                                                     type="button"
                                                     className="text-red-500 hover:text-red-700"
