@@ -75,5 +75,7 @@ deploy-ithink-image:
   image: registry.gitlab.com/galvanize-inc/foss/glv-cloud-cli:latest
   script:
     - glv-cloud-cli reset -a ithink -t ${CIRRUS_TOKEN}
+  variables:
+    CORS_HOST: "https://trawson.gitlab.io/project-i-think"
   only:
     - main
