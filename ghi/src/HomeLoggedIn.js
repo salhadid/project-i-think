@@ -28,14 +28,20 @@ function HomeLoggedIn() {
 
         // Fetch projects
         axios
-            .get(`${process.env.REACT_APP_iThink}/api/projects/list`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            })
+            .get(
+                `${process.env.REACT_APP_iThink}/api/projects/list/${user.id}`,
+                {
+                    // Adjust the endpoint
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem(
+                            "token"
+                        )}`,
+                    },
+                }
+            )
             .then((response) => {
                 const projectData = response.data;
-                setProjects(projectData); // Assuming the response is an array of objects
+                setProjects(projectData);
             })
             .catch((error) => {
                 alert(`Error fetching projects: ${error}`);

@@ -64,3 +64,11 @@ class ProjectQueries(Queries):
             }
             responses.append(response_data)
         return responses
+
+    def get_projects_for_user(self, user_id: str) -> list[ProjectOut]:
+        db = self.collection.find({"user_id": user_id})
+        projects = []
+        for document in db:
+            document["id"] = str(document["_id"])
+            projects.append(ProjectOut(**document))
+        return projects
