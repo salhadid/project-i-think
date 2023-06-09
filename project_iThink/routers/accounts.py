@@ -15,7 +15,6 @@ from queries.accounts import (
     AccountQueries,
     DuplicateAccountError,
     AccountPatch,
-
 )
 from typing import Optional
 
