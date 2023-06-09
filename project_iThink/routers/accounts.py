@@ -15,6 +15,7 @@ from queries.accounts import (
     AccountQueries,
     DuplicateAccountError,
     AccountPatch,
+
 )
 from typing import Optional
 
@@ -86,3 +87,4 @@ async def update_account(
         hashed_password = None
     updated_account = accounts.update_user(email, data, hashed_password)
     return updated_account
+

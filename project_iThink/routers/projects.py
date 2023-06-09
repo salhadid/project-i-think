@@ -5,6 +5,7 @@ from fastapi import (
     APIRouter,
     Body,
 )
+from project_iThink.queries.accounts import AccountOut
 from queries.projects import (
     ProjectIn,
     ProjectOut,
@@ -159,3 +160,19 @@ def delete_idea(
 @router.get("/api/projects/{project_id}/ideas")
 def get_ideas(project_id: str, repo: ProjectQueries = Depends()):
     return repo.get_ideas(project_id)
+
+
+@router.get("/projects/user/{user_id}", response_model=list[ProjectOut])
+def get_projects_for_user(
+    user_id: str,
+    project_queries: ProjectQueries = Depends(),
+    account_data: AccountOut = Depends(authenticator.try_get_current_account_data),
+):
+    if account_data is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Unauthorized"
+        )
+
+    projects = project_queries.get_projects_for_user(user_id)
+    return projects
