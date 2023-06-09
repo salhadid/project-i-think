@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
 const AIChat = () => {
-    // const [loading, setLoading] = useState(false);
     const [messages, setMessages] = useState([
         {
             message: "Hiya! Let's come up with some ideas together!",
@@ -23,7 +22,6 @@ const AIChat = () => {
     const sendMessage = (event) => {
         event.preventDefault();
 
-        // setLoading(true);
         axios
             .post(`${process.env.REACT_APP_iThink}/chat`, { message: input })
             .then((res) => {
@@ -33,11 +31,9 @@ const AIChat = () => {
                     { message: res.data.answer, type: "thinkbot" },
                 ]);
                 setInput("");
-                // setLoading(false);
             })
             .catch((err) => {
                 console.log(err);
-                // setLoading(false);
             });
     };
 

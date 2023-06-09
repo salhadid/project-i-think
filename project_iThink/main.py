@@ -7,13 +7,6 @@ from authenticator import authenticator
 app = FastAPI()
 
 origins = [
-    # "http://localhost",
-    # "http://localhost:8000",
-    # "https://localhost:3000",
-    # "http://localhost:27017",
-    # "http://trawson.gitlab.io",
-    # "https://trawson.gitlab.io/project-i-think",
-    # "https://feb-23-et-1-ithink.mod3projects.com",
     os.environ.get("CORS_HOST", None),
     os.environ.get("REACT_APP_iThink", None),
     os.environ.get("PUBLIC_URL", None),

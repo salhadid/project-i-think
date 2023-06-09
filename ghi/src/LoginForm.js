@@ -34,14 +34,13 @@ const LoginForm = () => {
             localStorage.setItem("token", response.data.access_token);
             console.log("Logged in successfully");
             toast.success(`User ${email} was logged in successfully`, {
-                autoClose: 3000, // Display for 3 seconds
+                autoClose: 3000,
             });
 
             setTimeout(() => {
-                // Navigate to home page and refresh
                 navigate("/");
                 window.location.reload();
-            }, 3000); // Wait for 3 seconds before navigating and reloading
+            }, 3000);
             resetForm();
         } catch (error) {
             console.error(error.response.data);

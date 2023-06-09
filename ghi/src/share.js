@@ -5,7 +5,6 @@ const SocialShare = () => {
 
     return (
         <div className="flex flex-col items-center">
-            {/* :SHARE BUTTON */}
             <button
                 className="group mb-1 w-11 h-11 inline-flex justify-center items-center rounded-full border-2 border-gray-200 bg-white"
                 onClick={() => setOpen(!open)}
@@ -24,9 +23,7 @@ const SocialShare = () => {
                 </svg>
             </button>
 
-            {/* :SOCIALS CONTAINER */}
             <div className={`${open ? "flex" : "hidden"} flex-col`}>
-                {/* ::Share title */}
                 <div
                     className="w-16 pb-1.5 pt-3 border-2 border-b border-gray-100 bg-gray-50 text-center text-gray-600 font-oswald uppercase"
                     style={{
@@ -37,9 +34,7 @@ const SocialShare = () => {
                     Share
                 </div>
 
-                {/* ::Links container */}
                 <div className="grid grid-rows-1">
-                    {/* :::twitter */}
                     <a
                         href="https://www.galvanize.com/"
                         target="_blank"
@@ -56,7 +51,6 @@ const SocialShare = () => {
                             <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
                         </svg>
                     </a>
-                    {/* :::facebook */}
                     <a
                         href="https://www.galvanize.com/"
                         target="_blank"
@@ -73,7 +67,6 @@ const SocialShare = () => {
                             <path d="M16.403,9H14V7c0-1.032,0.084-1.682,1.563-1.682h0.868c0.552,0,1-0.448,1-1V3.064c0-0.523-0.401-0.97-0.923-1.005C15.904,2.018,15.299,1.999,14.693,2C11.98,2,10,3.657,10,6.699V9H8c-0.552,0-1,0.448-1,1v2c0,0.552,0.448,1,1,1l2-0.001V21c0,0.552,0.448,1,1,1h2c0.552,0,1-0.448,1-1v-8.003l2.174-0.001c0.508,0,0.935-0.381,0.993-0.886l0.229-1.996C17.465,9.521,17.001,9,16.403,9z" />
                         </svg>
                     </a>
-                    {/* :::google */}
                     <a
                         href="https://www.galvanize.com/"
                         target="_blank"
@@ -91,7 +84,6 @@ const SocialShare = () => {
                             <path d="m7.5 19.5c4.328 0 7.203-3.038 7.203-7.326 0-.491-.051-.87-.122-1.248h-7.08v2.578h4.257c-.174 1.095-1.289 3.233-4.257 3.233-2.557 0-4.645-2.118-4.645-4.737s2.087-4.738 4.645-4.738c1.463 0 2.435.624 2.988 1.156l2.036-1.954c-1.311-1.227-2.999-1.964-5.025-1.964-4.144 0-7.5 3.356-7.5 7.5s3.356 7.5 7.5 7.5z" />
                         </svg>
                     </a>
-                    {/* :::email */}
                     <a
                         href="https://www.galvanize.com/"
                         className="row-span-1 group w-16 h-16 inline-flex justify-center items-center border-2 border-t border-b border-gray-100 bg-white hover:bg-gray-50"
@@ -106,7 +98,6 @@ const SocialShare = () => {
                             <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z" />
                         </svg>
                     </a>
-                    {/* :::copy link */}
                     <button className="row-span-1 group w-16 h-16 inline-flex justify-center items-center border-2 border-t border-b border-gray-100 bg-white hover:bg-gray-50">
                         <svg
                             className="w-5 h-5 text-gray-400 group-hover:opacity-70"

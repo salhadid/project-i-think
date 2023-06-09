@@ -11,7 +11,6 @@ function UpdateUser() {
     const [showPassword, setShowPassword] = useState(false);
 
     useEffect(() => {
-        // Fetch user account data
         axios
             .get(`${process.env.REACT_APP_iThink}/api/accounts/details`, {
                 headers: {
@@ -31,13 +30,11 @@ function UpdateUser() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // Validate password confirmation
         if (password !== confirmPassword) {
             alert("Passwords do not match!");
             return;
         }
 
-        // Build data object
         const data = {};
         if (email) {
             data.email = email;
@@ -49,7 +46,6 @@ function UpdateUser() {
             data.full_name = fullName;
         }
 
-        // Send PATCH request
         axios
             .patch(
                 `${process.env.REACT_APP_iThink}/api/accounts/${email}`,
@@ -57,7 +53,6 @@ function UpdateUser() {
             )
             .then((response) => {
                 toast.success("Account updated successfully!👀");
-                // Clear form fields
                 setPassword("");
                 setConfirmPassword("");
             })

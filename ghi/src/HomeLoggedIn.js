@@ -11,7 +11,6 @@ function HomeLoggedIn() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch user data
         axios
             .get(`${process.env.REACT_APP_iThink}/api/accounts/details`, {
                 headers: {
@@ -26,7 +25,6 @@ function HomeLoggedIn() {
                 alert(`Error fetching user data: ${error}`);
             });
 
-        // Fetch projects
         axios
             .get(`${process.env.REACT_APP_iThink}/api/projects/list`, {
                 headers: {
@@ -35,13 +33,12 @@ function HomeLoggedIn() {
             })
             .then((response) => {
                 const projectData = response.data;
-                setProjects(projectData); // Assuming the response is an array of objects
+                setProjects(projectData);
             })
             .catch((error) => {
                 alert(`Error fetching projects: ${error}`);
             });
 
-        // Fetch images
         axios
             .get(`${process.env.REACT_APP_iThink}/api/images/list`, {
                 headers: {
@@ -110,7 +107,6 @@ function HomeLoggedIn() {
                                     type="button"
                                     className="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition ease-in-out duration-150"
                                     onClick={() => {
-                                        // Log out user
                                         localStorage.removeItem("token");
                                         window.location.reload();
                                     }}

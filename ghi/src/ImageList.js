@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 function ImageList() {
     const [images, setImages] = useState([]);
     const [votes, setVotes] = useState({});
-    const [enlargedImageId, setEnlargedImageId] = useState(null); // track if an image is enlarged
+    const [enlargedImageId, setEnlargedImageId] = useState(null);
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_iThink}/api/images/list`)

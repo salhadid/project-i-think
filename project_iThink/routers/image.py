@@ -24,7 +24,7 @@ async def get_image(filename: str, repo: ImageQueries = Depends()):
     file = repo.get_image(filename)
     return Response(
         file, media_type="image/jpeg"
-    )  # adjust the media_type according to your needs
+    )
 
 
 @router.delete("/api/images/{image_id}")

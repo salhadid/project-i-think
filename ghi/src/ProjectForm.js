@@ -50,10 +50,10 @@ function ProjectForm() {
             );
 
             setSuccess("Successfully assigned user to the project.");
-            setError(""); // clear any previous errors
-            setSelectedProject(""); // clear selected project
-            setSelectedUser(""); // clear selected user
-            setRole(""); // clear role input
+            setError("");
+            setSelectedProject("");
+            setSelectedUser("");
+            setRole("");
             toast.success("Woohoo! You added a a member! Now get to work! 💻");
         } catch (error) {
             console.error(
@@ -76,7 +76,6 @@ function ProjectForm() {
             >
                 <h2 className="text-2xl mb-4">Add Member to Project</h2>
 
-                {/* Project selection */}
                 <select
                     className="block w-full p-2 mb-4 border border-gray-300 rounded-md focus:outline-none"
                     value={selectedProject}
@@ -90,7 +89,6 @@ function ProjectForm() {
                     ))}
                 </select>
 
-                {/* User selection */}
                 <select
                     className="block w-full p-2 mb-4 border border-gray-300 rounded-md focus:outline-none"
                     value={selectedUser}
@@ -104,7 +102,6 @@ function ProjectForm() {
                     ))}
                 </select>
 
-                {/* Role input */}
                 <input
                     className="block w-full p-2 mb-4 border border-gray-300 rounded-md focus:outline-none"
                     type="text"
@@ -114,13 +111,10 @@ function ProjectForm() {
                     required
                 />
 
-                {/* Error message */}
                 {error && <p className="text-red-500 mb-4">{error}</p>}
 
-                {/* Success message */}
                 {success && <p className="text-green-500 mb-4">{success}</p>}
 
-                {/* Submit button */}
                 <button
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none"
                     type="submit"

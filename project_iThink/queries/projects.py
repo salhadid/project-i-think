@@ -24,7 +24,7 @@ class ProjectQueries(Queries):
         if "responses" not in props:
             props[
                 "responses"
-            ] = []  # ensure 'responses' is initialized as an empty list
+            ] = []
         self.collection.insert_one(props)
         props["id"] = str(props["_id"])
         return ProjectOut(**props)

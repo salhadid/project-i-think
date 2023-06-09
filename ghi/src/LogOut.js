@@ -11,7 +11,6 @@ const LogOut = () => {
         window.location.reload();
     };
 
-    // If there's no token in the local storage, don't show the Logout button.
     if (!token) {
         return null;
     }
