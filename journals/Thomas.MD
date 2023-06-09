@@ -1,8 +1,16 @@
+## June 9th, 2023
+
+-   Deployed.
+-   Decided to table uploading fixes to homepage, updatepage, create project page, login page and create account page until after grading to make sure we dont break the deployment for grading.
+
 ## June 8th, 2023
 
 -   Got deployment to work. Working on axios errors.
 -   Demo'd project to Candice.
 -   Updated REACT_APP variable on gitlab
+-   Polished homepage, update page and ai page.
+-   Redirected to AI page on project creation.
+-   Would like to force refresh on update for full_name
 
 ## June 7th, 2023
 
