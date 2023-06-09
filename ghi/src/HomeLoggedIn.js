@@ -35,7 +35,13 @@ function HomeLoggedIn() {
             })
             .then((response) => {
                 const projectData = response.data;
-                setProjects(projectData); // Assuming the response is an array of objects
+                // filter the projects so we only keep the ones where the current user is the manager or is assigned to
+                const myProjects = projectData.filter(
+                    (project) =>
+                        project.managerId === user.id ||
+                        project.assignedUsers.includes(user.id)
+                );
+                setProjects(myProjects);
             })
             .catch((error) => {
                 alert(`Error fetching projects: ${error}`);
