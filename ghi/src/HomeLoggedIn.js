@@ -10,8 +10,8 @@ function HomeLoggedIn() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const navigate = useNavigate();
 
+    // Fetch user data
     useEffect(() => {
-        // Fetch user data
         axios
             .get(`${process.env.REACT_APP_iThink}/api/accounts/details`, {
                 headers: {
@@ -25,27 +25,27 @@ function HomeLoggedIn() {
             .catch((error) => {
                 alert(`Error fetching user data: ${error}`);
             });
+    }, []);
 
-        // Fetch projects
-        axios
-            .get(`${process.env.REACT_APP_iThink}/api/projects/list`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            })
-            .then((response) => {
-                const projectData = response.data;
-                // filter the projects so we only keep the ones where the current user is the manager or is assigned to
-                const myProjects = projectData.filter(
-                    (project) =>
-                        project.managerId === user.id ||
-                        project.assignedUsers.includes(user.id)
-                );
-                setProjects(myProjects);
-            })
-            .catch((error) => {
-                alert(`Error fetching projects: ${error}`);
-            });
+    // Fetch projects
+    useEffect(() => {
+        if(user.id) {
+            axios
+                .get(`${process.env.REACT_APP_iThink}/api/projects/list`, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                })
+                .then((response) => {
+                    const projectData = response.data;
+                    const myProjects = projectData.filter(project => project.managerId === user.id || project.assignedUsers.includes(user.id));
+                    setProjects(myProjects);
+                })
+                .catch((error) => {
+                    alert(`Error fetching projects: ${error}`);
+                });
+        }
+    }, [user.id]);
 
         // Fetch images
         axios
