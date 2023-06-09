@@ -5,7 +5,6 @@ from fastapi import (
     APIRouter,
     Body,
 )
-from project_iThink.queries.accounts import AccountOut
 from queries.projects import (
     ProjectIn,
     ProjectOut,
