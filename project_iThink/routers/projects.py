@@ -159,3 +159,12 @@ def delete_idea(
 @router.get("/api/projects/{project_id}/ideas")
 def get_ideas(project_id: str, repo: ProjectQueries = Depends()):
     return repo.get_ideas(project_id)
+
+
+@router.get("/projects/user/{user_id}", response_model=list[ProjectOut])
+def get_projects_for_user(user_id: str, project_queries: ProjectQueries = Depends(), current_user = Depends(get_current_user)):
+    if current_user is None:
+        return "Unauthorized"
+
+    projects = project_queries.get_projects_for_user(user_id)
+    return projects
