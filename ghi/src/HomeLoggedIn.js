@@ -45,7 +45,7 @@ function HomeLoggedIn() {
             })
             .catch((error) => {
                 alert(`Error fetching projects: ${error}`);
-            });
+            }, [user.id]);
 
         // Fetch images
         axios
