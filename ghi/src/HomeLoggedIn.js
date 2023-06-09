@@ -27,28 +27,19 @@ function HomeLoggedIn() {
             });
 
         // Fetch projects
-        if (user.id) {
-            axios
-                .get(
-                    `${process.env.REACT_APP_iThink}/api/projects/list/${user.id}`,
-                    {
-                        // Adjust the endpoint
-                        headers: {
-                            Authorization: `Bearer ${localStorage.getItem(
-                                "token"
-                            )}`,
-                        },
-                    }
-                )
-                .then((response) => {
-                    const projectData = response.data;
-                    setProjects(projectData);
-                })
-                .catch((error) => {
-                    alert(`Error fetching projects: ${error}`);
-                });
-        }
-    }, [user.id]); 
+        axios
+            .get(`${process.env.REACT_APP_iThink}/api/projects/list`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            })
+            .then((response) => {
+                const projectData = response.data;
+                setProjects(projectData); // Assuming the response is an array of objects
+            })
+            .catch((error) => {
+                alert(`Error fetching projects: ${error}`);
+            });
 
         // Fetch images
         axios
@@ -175,7 +166,6 @@ function HomeLoggedIn() {
                                                     }}
                                                 >
                                                     {project.title}{" "}
-                                                    {/* Update the property name to 'title' */}
                                                 </button>
                                                 <button
                                                     type="button"
