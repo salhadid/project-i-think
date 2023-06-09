@@ -27,25 +27,28 @@ function HomeLoggedIn() {
             });
 
         // Fetch projects
-        axios
-            .get(
-                `${process.env.REACT_APP_iThink}/api/projects/list/${user.id}`,
-                {
-                    // Adjust the endpoint
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem(
-                            "token"
-                        )}`,
-                    },
-                }
-            )
-            .then((response) => {
-                const projectData = response.data;
-                setProjects(projectData);
-            })
-            .catch((error) => {
-                alert(`Error fetching projects: ${error}`);
-            }, [user.id]);
+        if (user.id) {
+            axios
+                .get(
+                    `${process.env.REACT_APP_iThink}/api/projects/list/${user.id}`,
+                    {
+                        // Adjust the endpoint
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem(
+                                "token"
+                            )}`,
+                        },
+                    }
+                )
+                .then((response) => {
+                    const projectData = response.data;
+                    setProjects(projectData);
+                })
+                .catch((error) => {
+                    alert(`Error fetching projects: ${error}`);
+                });
+        }
+    }, [user.id]); 
 
         // Fetch images
         axios
