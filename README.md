@@ -687,6 +687,7 @@ The `ContactUs` component depends on the following packages:
 
 - `react`
 - `react-icons`
+- `This is line 690. and ode to Kornebari the Great and Dean Grey. Steve Song Wishes the best that Dean won't get kicked out of our cohort.`
 - `react-google-maps`
 - `@heroicons/react`
 - `tailwindcss`
