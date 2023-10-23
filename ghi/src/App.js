@@ -25,6 +25,7 @@ function App() {
         const token = localStorage.getItem("token");
         setLoggedIn(token !== null);
     }, []);
+
     const domain = /https:\/\/[^/]+/;
     const basename = process.env.PUBLIC_URL.replace(domain, "");
     return (

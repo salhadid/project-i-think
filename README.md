@@ -1277,7 +1277,7 @@ The `UpdateUser` component depends on the following packages:
 - `axios`
 - `react-toastify`
 - `tailwindcss`
-
+   
 Make sure to install them before using the component:
 
 ```bash

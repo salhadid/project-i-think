@@ -7,10 +7,11 @@ services:
   - docker:dind
 
 project-iThink-unit-tests:
-  image: python:3-bullseye
+  image: python:3.10.6
   stage: test
   script:
     - cd project_iThink
+    - pip install --upgrade pip
     - pip install -r requirements.txt
     - python -m pytest
   variables:
@@ -25,7 +26,7 @@ lint-test:
 
 front-end-build-job:
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
   stage: build
   image: node:lts-bullseye
   needs:
@@ -40,13 +41,13 @@ front-end-build-job:
     paths:
       - ghi/build/
   variables:
-    PUBLIC_URL: https://trawson.gitlab.io/project-i-think
-    REACT_APP_iThink: feb-23-et-1-ithink.mod3projects.com
+    PUBLIC_URL: 'https://trawson.gitlab.io/project-i-think'
+    REACT_APP_iThink: 'feb-23-et-1-ithink.mod3projects.com'
 
 pages:
   stage: deploy
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
   dependencies:
     - front-end-build-job
   needs:
@@ -61,7 +62,7 @@ build-ithink-image:
   stage: build
   image: docker:git
   variables:
-    GITLAB_IMAGE: ${CI_REGISTRY_IMAGE}/ithink_image
+    GITLAB_IMAGE: '${CI_REGISTRY_IMAGE}/ithink_image'
   before_script:
     - echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token registry.gitlab.com --password-stdin
   script:
@@ -77,3 +78,4 @@ deploy-ithink-image:
     - glv-cloud-cli reset -a ithink -t ${CIRRUS_TOKEN}
   only:
     - main
+#
