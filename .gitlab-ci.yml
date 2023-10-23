@@ -13,6 +13,7 @@ project-iThink-unit-tests:
     - cd project_iThink
     - pip install --upgrade pip
     - pip install -r requirements.txt
+    - export OPENAI_API_KEY=$OPENAI_API_KEY
     - python -m pytest
   variables:
     MONGO_URL: any_value
