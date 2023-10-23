@@ -16,6 +16,7 @@ project-iThink-unit-tests:
     - python -m pytest
   variables:
     MONGO_URL: any_value
+    OPENAI_API_KEY: $OPENAI_API_KEY
 
 lint-test:
   image: python:3-bullseye
@@ -43,6 +44,7 @@ front-end-build-job:
   variables:
     PUBLIC_URL: 'https://trawson.gitlab.io/project-i-think'
     REACT_APP_iThink: 'feb-23-et-1-ithink.mod3projects.com'
+    OPENAI_API_KEY: $OPENAI_API_KEY
 
 pages:
   stage: deploy
