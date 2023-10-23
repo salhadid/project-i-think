@@ -7,3 +7,4 @@ pytest
 openai
 fuzzywuzzy
 python-Levenshtein
+aiohttp==3.8.6
