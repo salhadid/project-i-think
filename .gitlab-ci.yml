@@ -6,77 +6,73 @@ stages:
 services:
   - docker:dind
 
-variables:
-  MONGO_URL: any_value
+project-iThink-unit-tests:
+  image: python:3-bullseye
+  stage: test
+  script:
+    - cd project_iThink
+    - pip install -r requirements.txt
+    - python -m pytest
+  variables:
+    MONGO_URL: any_value
 
-# Define your jobs under the "jobs" section
-jobs:
-  project-iThink-unit-tests:
-    image: python:3-bullseye
-    stage: test
-    script:
-      - cd project_iThink
-      - pip install -r requirements.txt
-      - python -m pytest
+lint-test:
+  image: python:3-bullseye
+  stage: test
+  script:
+    - pip install flake8
+    - flake8 project_iThink
 
-  lint-test:
-    image: python:3-bullseye
-    stage: test
-    script:
-      - pip install flake8
-      - flake8 project_iThink
+front-end-build-job:
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  stage: build
+  image: node:lts-bullseye
+  needs:
+    - lint-test
+  script:
+    - cd ghi
+    - npm install
+    - npm run build
+    - cp build/index.html build/404.html
+  artifacts:
+    paths:
+      - ghi/build/
+  variables:
+    PUBLIC_URL: https://trawson.gitlab.io/project-i-think
+    REACT_APP_iThink: feb-23-et-1-ithink.mod3projects.com
 
-  front-end-build-job:
-    rules:
-      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    stage: build
-    image: node:lts-bullseye
-    needs:
-      - project-iThink-unit-tests
-      - lint-test
-    script:
-      - cd ghi
-      - npm install
-      - npm run build
-      - cp build/index.html build/404.html
-    artifacts:
-      paths:
-        - ghi/build/
-    variables:
-      PUBLIC_URL: https://trawson.gitlab.io/project-i-think
-      REACT_APP_iThink: feb-23-et-1-ithink.mod3projects.com
+pages:
+  stage: deploy
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  dependencies:
+    - front-end-build-job
+  needs:
+    - front-end-build-job
+  script:
+    - mv ghi/build public
+  artifacts:
+    paths:
+      - public
 
-  pages:
-    stage: deploy
-    rules:
-      - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    dependencies:
-      - front-end-build-job
-    needs:
-      - front-end-build-job
-    script:
-      - mv ghi/build public
-    artifacts:
-      paths:
-        - public
+build-ithink-image:
+  stage: build
+  image: docker:git
+  variables:
+    GITLAB_IMAGE: ${CI_REGISTRY_IMAGE}/ithink_image
+  before_script:
+    - echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token registry.gitlab.com --password-stdin
+  script:
+    - docker build --tag $GITLAB_IMAGE:latest project_iThink
+    - docker push $GITLAB_IMAGE:latest
+  only:
+    - main
 
-  build-ithink-image:
-    stage: build
-    image: docker:git
-    variables:
-      GITLAB_IMAGE: ${CI_REGISTRY_IMAGE}/ithink_image
-    before_script:
-      - echo $CI_JOB_TOKEN | docker login -u gitlab-ci-token registry.gitlab.com --password-stdin
-    script:
-      - docker build --tag $GITLAB_IMAGE:latest project_iThink
-      - docker push $GITLAB_IMAGE:latest
-    only:
-      - main
-
-  deploy-ithink-image:
-    stage: deploy
-    image: registry.gitlab.com/galvanize-inc/foss/glv-cloud-cli:latest
-    script:
-      - glv-cloud-cli reset -a ithink -t ${CIRRUS_TOKEN}
-    only:
-      - main
+deploy-ithink-image:
+  stage: deploy
+  image: registry.gitlab.com/galvanize-inc/foss/glv-cloud-cli:latest
+  script:
+    - glv-cloud-cli reset -a ithink -t ${CIRRUS_TOKEN}
+  only:
+    - main
