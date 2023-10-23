@@ -1,15 +1,36 @@
 stages:
+  - test
   - build
   - deploy
 
 services:
   - docker:dind
 
+project-iThink-unit-tests:
+  image: python:3-bullseye
+  stage: test
+  script:
+    - cd project_iThink
+    - pip install -r requirements.txt
+    - python -m pytest
+  variables:
+    MONGO_URL: any_value
+
+lint-test:
+  image: python:3-bullseye
+  stage: test
+  script:
+    - pip install flake8
+    - flake8 project_iThink
+
 front-end-build-job:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   stage: build
   image: node:lts-bullseye
+  needs:
+    - project-iThink-unit-tests
+    - lint-test
   script:
     - cd ghi
     - npm install
@@ -27,6 +48,8 @@ pages:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   dependencies:
+    - front-end-build-job
+  needs:
     - front-end-build-job
   script:
     - mv ghi/build public
@@ -54,4 +77,3 @@ deploy-ithink-image:
     - glv-cloud-cli reset -a ithink -t ${CIRRUS_TOKEN}
   only:
     - main
-# fix 
