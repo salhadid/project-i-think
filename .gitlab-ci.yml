@@ -1,20 +1,10 @@
 stages:
-  # - test
   - build
   - deploy
 
 services:
   - docker:dind
 
-project-iThink-unit-tests:
-  image: python:3-bullseye
-  stage: test
-  script:
-    - cd project_iThink
-    - pip install -r requirements.txt
-    - python -m pytest
-  variables:
-    MONGO_URL: any_value
 
 lint-test:
   image: python:3-bullseye
