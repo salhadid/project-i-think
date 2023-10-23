@@ -7,7 +7,7 @@ services:
   - docker:dind
 
 project-iThink-unit-tests:
-  image: python:3-bullseye
+  image: python:3.10.6
   stage: test
   script:
     - cd project_iThink
