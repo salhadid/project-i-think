@@ -77,3 +77,4 @@ deploy-ithink-image:
     - glv-cloud-cli reset -a ithink -t ${CIRRUS_TOKEN}
   only:
     - main
+#
